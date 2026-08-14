@@ -350,6 +350,21 @@ inline bool IRadScript::IsCurrentPlatForm( ) const
     }
     #endif
 
+    #ifdef RAD_PS3
+    //
+    // There is no PT_PS3 tag, and without a case here IsCurrentPlatForm()
+    // returned false for everything -- every object in every script was
+    // skipped, so the sound namespaces came up empty and the game asserted
+    // its way through NULL settings objects. The disc image is the PC data
+    // set, so match what a PC build would. PT_DEFAULT is -1, so untagged
+    // objects still match.
+    //
+    if ( nReturnOption & ParserConst::PT_PC )
+    {
+        return true;
+    }
+    #endif
+
     #ifdef RAD_GAMECUBE
     if ( nReturnOption & ParserConst::PT_GCN )
     {

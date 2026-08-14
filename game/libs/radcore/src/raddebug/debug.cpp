@@ -38,6 +38,11 @@
 	#include <dolphin/os.h>
 #endif // RAD_GAMECUBE
 
+#ifdef RAD_PS3
+	#include <sys/tty.h>
+	#include <string.h>
+#endif // RAD_PS3
+
 //=============================================================================
 // Local Functions 
 //=============================================================================
@@ -59,6 +64,8 @@ int rDebugVsnPrintf( char *buffer, size_t count, const char *format, va_list arg
         return vsnprintf( buffer, count, format, argptr );
     #elif defined (RAD_PS2)
         return vsprintf( buffer, format, argptr );
+    #elif defined (RAD_PS3)
+        return vsnprintf( buffer, count, format, argptr );
     #endif
 }
 
@@ -145,7 +152,17 @@ static DWORD rErrorMessageBox(const char* text)
 //=============================================================================
 // Globals
 //=============================================================================
+#ifdef RAD_PS3
+//
+// PS3 bring-up: log asserts and keep going rather than trapping. Large parts
+// of the game assert on state the stubbed sound system never builds, and each
+// trap costs a build-and-run cycle to get past. Set this back to true (or call
+// rDebugSetHaltOnAsserts) once the port stops tripping over stubs.
+//
+bool g_rDebugHaltOnAsserts = false;
+#else
 bool g_rDebugHaltOnAsserts = true;
+#endif
 
 radDebugOutputHandler * g_pDebugHandler = rDebuggerString_Implementation;
 
@@ -524,6 +541,20 @@ void rDebuggerString_Implementation( const char* string )
 		OSReport( (char*)string );
 		
 	#endif // RAD_GAMECUBE
+
+    //
+    // PS3: straight to the TTY. printf is off limits here -- it fights the
+    // game's dlmalloc allocator -- and without this every assert message and
+    // every rDebugString was dropped on the floor.
+    //
+    #ifdef RAD_PS3
+
+    {
+        unsigned int written;
+        sys_tty_write( 0, string, strlen( string ), &written );
+    }
+
+    #endif // RAD_PS3
 }
 
 //=============================================================================

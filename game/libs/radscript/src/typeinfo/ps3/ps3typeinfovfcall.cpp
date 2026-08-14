@@ -11,16 +11,16 @@ extern "C" int InvokeVf( void * pClass, unsigned int offset, unsigned int * pInt
     // Get the vtable pointer from the class
     void ** vtable = *((void***)pClass);
 
-    // Get the function pointer at the given offset
-    // Offset is in terms of vtable entries, not bytes
-    // vtable[0] is usually RTTI info, actual methods start at [1]
+    // The offset is a vtable entry index, not a byte offset. A GCC ELFv1 vptr
+    // points straight at the first virtual function -- offset-to-top and the
+    // type_info pointer sit *before* it -- so index directly.
     typedef int (*VirtualFunc)( void * pThis,
         unsigned int i0, unsigned int i1, unsigned int i2, unsigned int i3,
         unsigned int i4, unsigned int i5, unsigned int i6,
         float f0, float f1, float f2, float f3,
         float f4, float f5, float f6, float f7 );
 
-    VirtualFunc func = (VirtualFunc)vtable[offset + 1];
+    VirtualFunc func = (VirtualFunc)vtable[offset];
 
     // Call the function with all parameters
     return func( pClass,

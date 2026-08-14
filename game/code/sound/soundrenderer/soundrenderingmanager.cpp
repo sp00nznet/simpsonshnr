@@ -1305,7 +1305,15 @@ void daSoundRenderingManager::ProcessScript( void* pUserData )
     //
     if( m_scriptLoadCount < NumSoundScripts - NUM_TUNING_SCRIPTS )
     {
+#ifndef RAD_PS3
+        // PS3: this callback only queues sample banks for preloading, and there
+        // are no .rms banks in the disc image. Every resource the scripts
+        // declare fails to register and asserts -- thousands of them. The
+        // objects themselves still get created into the sound namespace, which
+        // is what the tuner needs.
+        //
         callbackPtr = SoundObjectCreated;
+#endif
 
         if( m_scriptLoadCount < NumClusterNames )
         {

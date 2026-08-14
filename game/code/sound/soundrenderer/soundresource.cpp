@@ -146,8 +146,22 @@ void daSoundResourceData::AddFilename
 void daSoundResourceData::GetFileNameAt( unsigned int index, char* buffer, unsigned int max )
 {
     rTuneAssert( false == Sound::daSoundResourceManager::GetInstance( )->GetResourceLockdown( ) );
+#ifndef RAD_PS3
     rTuneAssert( index < m_NumFiles );
-    
+#endif
+
+    if( index >= m_NumFiles || m_pFileIds[ index ].m_pName == NULL )
+    {
+        // PS3 has no sample banks, so resources can legitimately carry no
+        // files. Hand back an empty name instead of dereferencing NULL.
+        //
+        if( max > 0 )
+        {
+            buffer[ 0 ] = 0;
+        }
+        return;
+    }
+
     strcpy( buffer, m_pFileIds[ index ].m_pName );
 }
 

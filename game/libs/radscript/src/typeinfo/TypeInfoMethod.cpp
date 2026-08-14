@@ -23,6 +23,10 @@
 #include "gcn\gcntypeinfovfcall.h"
 #endif
 
+#ifdef RAD_PS3
+extern "C" int InvokeVf( void * pClass, unsigned int offset, unsigned int * pInts, float * pFloats );
+#endif
+
 //============================================================================
 // Component: IRadTypeInfoMethod
 //============================================================================
@@ -130,6 +134,43 @@ unsigned int IRadTypeInfoMethod::Invoke
                 return ret;
             
             #endif          
+
+            //
+            //  ---- RAD_PS3 ------------------------------------------------------
+            //
+            //  Without this the whole function fell through to "return 0" and
+            //  script method calls were silently dropped. The parameter split is
+            //  the GameCube's -- both are PowerPC -- but the vtable index is the
+            //  Win32 one: a GCC ELFv1 vptr points straight at the first virtual
+            //  function, with no leading entry to skip.
+            //
+
+            #ifdef RAD_PS3
+
+                unsigned int pIntParams[ 7 ];
+                float        pFloatParams[ 8 ];
+
+                int          ip = 0;
+                int          fp = 0;
+
+                for( unsigned int i = 0; i < numParams; i ++ )
+                {
+                    if ( GetParamInfoAt( i )->GetIndLvl( ) > 0 || GetParamInfoAt( i )->GetHashedType( ) != ParserConst::TOK_FLOAT )
+                    {
+                        rAssert( ip < 7 );
+
+                        pIntParams[ ip++ ] = ((unsigned int*)pParams)[ i ];
+                    }
+                    else
+                    {
+                        rAssert( fp < 8 );
+                        pFloatParams[ fp++ ] = ((float*)pParams)[ i ];
+                    }
+                }
+
+                return InvokeVf( pI, m_VTableOffset, pIntParams, pFloatParams );
+
+            #endif
        }
    }
    

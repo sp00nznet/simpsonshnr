@@ -776,7 +776,10 @@ bool DialogList::isIndividualLine( IDaSoundResource* resource )
     //
     tempBuffer[0] = '\0';
     resource->GetFileNameAt( 0, tempBuffer, FILENAME_BUFFER_LEN );
+#ifndef RAD_PS3
+    // No sample banks on PS3, so resources legitimately have no filenames.
     rAssert( strlen( tempBuffer ) > 0 );
+#endif
 
     DialogLine::StripDirectoryCrud( tempBuffer, buffer, FILENAME_BUFFER_LEN );
 
@@ -811,7 +814,10 @@ bool DialogList::isConversationLine( IDaSoundResource* resource )
     //
     tempBuffer[0] = '\0';
     resource->GetFileNameAt( 0, tempBuffer, FILENAME_BUFFER_LEN );
+#ifndef RAD_PS3
+    // No sample banks on PS3, so resources legitimately have no filenames.
     rAssert( strlen( tempBuffer ) > 0 );
+#endif
 
     DialogLine::StripDirectoryCrud( tempBuffer, buffer, FILENAME_BUFFER_LEN );
 
