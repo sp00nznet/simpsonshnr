@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="inc">
+      <UniqueIdentifier>{b180d5d3-18a1-4c46-8668-cc44b57ee1b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="typeinfo">
+      <UniqueIdentifier>{0ce05465-f9e7-458f-a391-ed2255c5d409}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="script">
+      <UniqueIdentifier>{540db3e3-bb3c-4fdc-8606-3051adb59de1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="typeinfoutil">
+      <UniqueIdentifier>{bca76639-d8df-4f46-a880-839140773eef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="factory">
+      <UniqueIdentifier>{7f907a87-2fef-4094-9e1b-c997b3361d32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="namespace">
+      <UniqueIdentifier>{e8fcfbbb-e454-49b7-97da-fbc84fbfcd69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="pch">
+      <UniqueIdentifier>{d88e49fa-b10b-4b63-8f01-87be779909f0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\inc\radfactory.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\radnamespace.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\radscript.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\radtypeinfo.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\radtypeinfoutil.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\typeinfo\win32\win32typeinfovfcall.h">
+      <Filter>typeinfo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\pch\pch.hpp">
+      <Filter>pch</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\typeinfo\TypeInfoEnum.cpp">
+      <Filter>typeinfo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\typeinfo\TypeInfoIntLiteral.cpp">
+      <Filter>typeinfo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\typeinfo\TypeInfoParam.cpp">
+      <Filter>typeinfo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\typeinfo\typeinfoinstance.cpp">
+      <Filter>typeinfo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\typeinfo\typeinfointerface.cpp">
+      <Filter>typeinfo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\typeinfo\typeinfoloader.cpp">
+      <Filter>typeinfo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\typeinfo\typeinfomethod.cpp">
+      <Filter>typeinfo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\typeinfo\typeinfosystem.cpp">
+      <Filter>typeinfo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\typeinfo\win32\win32typeinfovfcall.cpp">
+      <Filter>typeinfo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\script\remotescript.cpp">
+      <Filter>script</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\script\script.cpp">
+      <Filter>script</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\typeinfoutil\typeinfodistributor.cpp">
+      <Filter>typeinfoutil</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\typeinfoutil\typeinfoutil.cpp">
+      <Filter>typeinfoutil</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\factory\radfactory.cpp">
+      <Filter>factory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\namespace\namespace.cpp">
+      <Filter>namespace</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\pch\pch.cpp">
+      <Filter>pch</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

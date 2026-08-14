@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="FE Core">
+      <UniqueIdentifier>{be291cae-6a58-4ffd-868d-d6c43f1cac18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scrooby Interface">
+      <UniqueIdentifier>{a615ab00-ef8f-4d85-b6c3-4aa769a4f222}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FE Loaders">
+      <UniqueIdentifier>{cb737c10-ef0d-4c03-a984-3d5bd02c5d0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FE Loaders\XML">
+      <UniqueIdentifier>{e5458426-aa58-4ad7-ad29-1e3aeb2b767a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility Classes">
+      <UniqueIdentifier>{66be312c-0708-4ff8-b905-cf9e3562fbda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Manager">
+      <UniqueIdentifier>{161da356-61cf-4aa8-9198-5f6fea631108}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="String Classes">
+      <UniqueIdentifier>{62bf0f3f-a153-401d-a48a-2b7c3048dc4e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\FeApp.cpp">
+      <Filter>FE Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\FeBoundedDrawable.cpp">
+      <Filter>FE Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\FeDrawable.cpp">
+      <Filter>FE Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\FeEntity.cpp">
+      <Filter>FE Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\FeGroup.cpp">
+      <Filter>FE Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\FeLanguage.cpp">
+      <Filter>FE Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\FeLayer.cpp">
+      <Filter>FE Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\FeMovie.cpp">
+      <Filter>FE Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\FeOwner.cpp">
+      <Filter>FE Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\FePage.cpp">
+      <Filter>FE Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\FeParent.cpp">
+      <Filter>FE Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\FePolygon.cpp">
+      <Filter>FE Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\FeProject.cpp">
+      <Filter>FE Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\FePure3dObject.cpp">
+      <Filter>FE Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\FeScreen.cpp">
+      <Filter>FE Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\FeSprite.cpp">
+      <Filter>FE Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\FeText.cpp">
+      <Filter>FE Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\FeTextBible.cpp">
+      <Filter>FE Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\FeTextStyle.cpp">
+      <Filter>FE Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\tLinearTable.cpp">
+      <Filter>FE Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\scrooby\App.cpp">
+      <Filter>Scrooby Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\FeChunkHandler.cpp">
+      <Filter>FE Loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\FeLoaders.cpp">
+      <Filter>FE Loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\utility\BufferReader.cpp">
+      <Filter>FE Loaders\XML</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\xml\XMLParser.cpp">
+      <Filter>FE Loaders\XML</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\xml\XMLTree.cpp">
+      <Filter>FE Loaders\XML</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\utility\EnumConversion.cpp">
+      <Filter>Utility Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\utility\Util.cpp">
+      <Filter>Utility Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\utility\debugMessages.cpp">
+      <Filter>Utility Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\ResourceManager\FeResourceManager.cpp">
+      <Filter>Resource Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\strings\UnicodeString.cpp">
+      <Filter>String Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\strings\pcstring.cpp">
+      <Filter>String Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\strings\stricmp.cpp">
+      <Filter>String Classes</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\FeApp.h">
+      <Filter>FE Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\FeBoundedDrawable.h">
+      <Filter>FE Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\FeCharMap.h">
+      <Filter>FE Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\FeDrawable.h">
+      <Filter>FE Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\FeEntity.h">
+      <Filter>FE Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\FeGroup.h">
+      <Filter>FE Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\FeLanguage.h">
+      <Filter>FE Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\FeLayer.h">
+      <Filter>FE Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\FeMovie.h">
+      <Filter>FE Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\FeOwner.h">
+      <Filter>FE Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\FePage.h">
+      <Filter>FE Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\FeParent.h">
+      <Filter>FE Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\FePolygon.h">
+      <Filter>FE Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\FeProject.h">
+      <Filter>FE Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\FePure3dObject.h">
+      <Filter>FE Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\FeScreen.h">
+      <Filter>FE Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\FeSprite.h">
+      <Filter>FE Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\FeText.h">
+      <Filter>FE Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\FeTextBible.h">
+      <Filter>FE Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\FeTextStyle.h">
+      <Filter>FE Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\tLinearTable.h">
+      <Filter>FE Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\App.h">
+      <Filter>Scrooby Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\BoundedDrawable.h">
+      <Filter>Scrooby Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\Drawable.h">
+      <Filter>Scrooby Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\Enums.h">
+      <Filter>Scrooby Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\Group.h">
+      <Filter>Scrooby Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\Layer.h">
+      <Filter>Scrooby Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\Movie.h">
+      <Filter>Scrooby Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\Owner.h">
+      <Filter>Scrooby Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\Page.h">
+      <Filter>Scrooby Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\Polygon.h">
+      <Filter>Scrooby Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\Project.h">
+      <Filter>Scrooby Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\Pure3dObject.h">
+      <Filter>Scrooby Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\ResourceManager.h">
+      <Filter>Scrooby Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\Screen.h">
+      <Filter>Scrooby Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\Scrooby.hpp">
+      <Filter>Scrooby Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\Sprite.h">
+      <Filter>Scrooby Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\Text.h">
+      <Filter>Scrooby Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\TextBible.h">
+      <Filter>Scrooby Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\FeChunkHandler.h">
+      <Filter>FE Loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\FeLoadTags.h">
+      <Filter>FE Loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\FeLoaders.h">
+      <Filter>FE Loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utility\BufferReader.h">
+      <Filter>FE Loaders\XML</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\xml\XMLParser.h">
+      <Filter>FE Loaders\XML</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\xml\XMLTree.h">
+      <Filter>FE Loaders\XML</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utility\EnumConversion.h">
+      <Filter>Utility Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utility\Util.h">
+      <Filter>Utility Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utility\debugMessages.h">
+      <Filter>Utility Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utility\memory.h">
+      <Filter>Utility Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\utility\rVector.hpp">
+      <Filter>Utility Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\ResourceManager\FeResourceManager.h">
+      <Filter>Resource Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\strings\pcstring.h">
+      <Filter>String Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\strings\stricmp.h">
+      <Filter>String Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\strings\unicodeString.h">
+      <Filter>String Classes</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="includePaths.txt" />
+  </ItemGroup>
+</Project>

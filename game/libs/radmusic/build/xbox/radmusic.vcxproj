@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ClInclude Include="..\..\inc\memory\memory.hpp" />
+    <ClInclude Include="..\..\inc\ods\ods.hpp" />
+    <ClInclude Include="..\..\inc\ods\parser.hpp" />
+    <ClInclude Include="..\..\inc\radmusic\radmusic.hpp" />
+    <ClInclude Include="..\..\inc\radmusic\schema.hpp" />
+    <ClInclude Include="..\..\src\ods\ods_memory.hpp" />
+    <ClInclude Include="..\..\src\pch\pch.hpp" />
+    <ClInclude Include="..\..\src\radmusic\music\music_composition.hpp" />
+    <ClInclude Include="..\..\src\radmusic\music\music_engine.hpp" />
+    <ClInclude Include="..\..\src\radmusic\music\music_engine_state_fade.hpp" />
+    <ClInclude Include="..\..\src\radmusic\music\music_engine_state_steady.hpp" />
+    <ClInclude Include="..\..\src\radmusic\music\music_engine_state_stitch.hpp" />
+    <ClInclude Include="..\..\src\radmusic\music\music_engine_state_stopped.hpp" />
+    <ClInclude Include="..\..\src\radmusic\music\music_performance.hpp" />
+    <ClInclude Include="..\..\src\radmusic\resource\resource_manager.hpp" />
+    <ClInclude Include="..\..\src\radmusic\schema\schema_util.hpp" />
+    <ClInclude Include="..\..\src\radmusic\sequence\sequence_player.hpp" />
+    <ClInclude Include="..\..\src\radmusic\sequence\sequence_region.hpp" />
+    <ClInclude Include="..\..\src\radmusic\sequence\sequence_stream_graph.hpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <SccProjectName>Perforce Project</SccProjectName>
+    <SccAuxPath />
+    <SccLocalPath>..\..</SccLocalPath>
+    <SccProvider>MSSCCI:Perforce SCM</SccProvider>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>17.0.36804.4</_ProjectFileVersion>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\memory\memory.cpp" />
+    <ClCompile Include="..\..\src\ods\ods.cpp" />
+    <ClCompile Include="..\..\src\ods\ods_codegen.cpp" />
+    <ClCompile Include="..\..\src\ods\ods_memory.cpp" />
+    <ClCompile Include="..\..\src\ods\ods_parser.cpp" />
+    <ClCompile Include="..\..\src\ods\ods_util.cpp" />
+    <ClCompile Include="..\..\src\pch\pch.cpp" />
+    <ClCompile Include="..\..\src\radmusic\framework\framework.cpp" />
+    <ClCompile Include="..\..\src\radmusic\music\music_composition.cpp" />
+    <ClCompile Include="..\..\src\radmusic\music\music_engine.cpp" />
+    <ClCompile Include="..\..\src\radmusic\music\music_engine_state_fade.cpp" />
+    <ClCompile Include="..\..\src\radmusic\music\music_engine_state_steady.cpp" />
+    <ClCompile Include="..\..\src\radmusic\music\music_engine_state_stitch.cpp" />
+    <ClCompile Include="..\..\src\radmusic\music\music_engine_state_stopped.cpp" />
+    <ClCompile Include="..\..\src\radmusic\music\music_performance.cpp" />
+    <ClCompile Include="..\..\src\radmusic\resource\resource_manager.cpp" />
+    <ClCompile Include="..\..\src\radmusic\schema\schema_util.cpp" />
+    <ClCompile Include="..\..\src\radmusic\sequence\sequence_player.cpp" />
+    <ClCompile Include="..\..\src\radmusic\sequence\sequence_region.cpp" />
+    <ClCompile Include="..\..\src\radmusic\sequence\sequence_stream_graph.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\releasenotes.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

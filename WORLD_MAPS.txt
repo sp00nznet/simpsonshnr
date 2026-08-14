@@ -1,0 +1,202 @@
+================================================================================
+          THE SIMPSONS: HIT & RUN - WORLD MAPS
+================================================================================
+
+This file contains ASCII maps of the three unique world layouts used in the game.
+Coordinates are based on teleport destinations from level scripts.
+
+Note: Levels reuse maps with different missions/time of day:
+  - Suburban Springfield: Levels 1, 4, 7 (Halloween)
+  - Downtown Springfield: Levels 2, 5
+  - Entertainment District: Levels 3, 6
+
+================================================================================
+                    MAP 1: SUBURBAN SPRINGFIELD
+                       (Levels 1, 4, 7)
+================================================================================
+
+Coordinate Range: X: -405 to 391, Z: -586 to 494
+Scale: ~80 units per character
+
+                              NORTH (+Z)
+                                 ^
+                                 |
+    +------------------------------------------------------------------+
+    |                                                                  |
+    |                        [Trailer Park]                            |  Z=494
+    |                             *                                    |
+    |                                                                  |
+    |          [Tomacco]                                               |  Z=425
+    |              *                   [Cletus' House]                 |  Z=356
+    |                                       *                          |
+    |                                                                  |
+    |   [Power Plant]      [Power Plant                                |
+    |    Interior]          Parking]                                   |  Z=297
+    |        *                 *                                       |
+    |                                                                  |
+    |                                                                  |
+    | [Stonecutters                                                    |
+    |   Tunnel]                                                        |  Z=60
+    |      *                                                           |
+    |                                            [Graveyard]           |  Z=5
+    |                                                 *                |
+    |             [Burns'                                              |
+    |             Mansion]                                             |  Z=-96
+    |                *                                                 |
+    |                                                                  |
+    |                                [Simpsons' House]                 |  Z=-172
+    |                                       *                          |
+    |                                                                  |
+    |                                [Kwik E Mart]                     |  Z=-285
+    |                                     *                            |
+    |                                                                  |
+    |                                                                  |
+    |                                                                  |
+    |                                [Church]                          |  Z=-570
+    |                                   *                              |
+    |        [Springfield Elementary]                                  |  Z=-586
+    |                 *                                                |
+    +------------------------------------------------------------------+
+   X=-405                         X=0                              X=391
+          WEST (-X) <---------------------------> EAST (+X)
+
+LEGEND - SUBURBAN SPRINGFIELD:
+----------------------------------
+  Simpsons' House ......... (220, -172)   Home base, Homer's family
+  Kwik E Mart ............. (209, -285)   Apu's store
+  Church .................. (194, -570)   Near Flanders
+  Springfield Elementary .. (-11, -586)   School
+  Burns' Mansion .......... (-186, -96)   Mr. Burns' estate
+  Stonecutters Tunnel ..... (-405, 60)    Secret society entrance
+  Power Plant Interior .... (-80, 297)    Nuclear power plant
+  Power Plant Parking ..... (40, 296)     Plant lot
+  Tomacco ................. (190, 425)    Radioactive tomato farm
+  Trailer Park ............ (391, 494)    Edge of town
+  Cletus' House ........... (334, 356)    Yokel residence
+  Graveyard ............... (368, 5)      Spooky cemetery
+
+
+================================================================================
+                    MAP 2: DOWNTOWN SPRINGFIELD
+                         (Levels 2, 5)
+================================================================================
+
+Coordinate Range: X: -440 to 137, Z: 22 to 617
+Scale: ~60 units per character
+
+                              NORTH (+Z)
+                                 ^
+                                 |
+    +------------------------------------------------------------------+
+    |                                                                  |
+    | [Matlock Expy                                                    |  Z=617
+    |  Downtown]                                                       |
+    |      *                                                           |
+    |                                                                  |
+    | [Matlock Expy                                                    |  Z=554
+    |  East Side]                                                      |
+    |      *                                                           |
+    |                                                                  |
+    |           [Monorail]                                             |  Z=464
+    |               *                                                  |
+    |                                                                  |
+    |       [Try 'n Save                                               |  Z=370
+    |         / DMV]                                                   |
+    |           *                                                      |
+    |                                                                  |
+    |                                           [Stadium]              |  Z=315
+    |                                               *                  |
+    |                                                                  |
+    |                                                                  |
+    |    [Railyard]                                                    |  Z=129
+    |        *                                                         |
+    |                                                                  |
+    |                                                                  |
+    |                                          [Town Square]           |  Z=45
+    |   [Moe's]                                     *                  |  Z=23
+    |     *                                                            |
+    +------------------------------------------------------------------+
+   X=-440                        X=-150                            X=137
+          WEST (-X) <---------------------------> EAST (+X)
+
+LEGEND - DOWNTOWN SPRINGFIELD:
+----------------------------------
+  Town Square ............. (135, 45)     Central plaza
+  Moe's ................... (-166, 23)    Moe's Tavern
+  Railyard ................ (-379, 129)   Train depot
+  Try 'n Save / DMV ....... (-266, 370)   Shopping/DMV
+  Matlock Expy East ....... (-440, 554)   Highway section
+  Matlock Expy Downtown ... (-403, 617)   Highway section
+  Monorail ................ (-224, 464)   Monorail station
+  Stadium ................. (137, 315)    Sports stadium
+
+
+================================================================================
+                  MAP 3: ENTERTAINMENT DISTRICT
+                        (Levels 3, 6)
+================================================================================
+
+Coordinate Range: X: -513 to 185, Z: -200 to 477
+Scale: ~70 units per character
+
+                              NORTH (+Z)
+                                 ^
+                                 |
+    +------------------------------------------------------------------+
+    |                                                                  |
+    |                                          [Observatory]           |  Z=477
+    |                                               *                  |
+    |                                                                  |
+    |                                                                  |
+    |                                                                  |
+    |                                                                  |
+    |                                                                  |
+    |       [Krustylu Studios]                                         |  Z=238
+    |              *                                                   |
+    |                                                                  |
+    |                                                                  |
+    |         [Docks]                                                  |  Z=38
+    |            *                                                     |
+    |                                         [Android's Dungeon]      |  Z=-1
+    |                                               *                  |
+    |                                                                  |
+    |  [Planet Hype]                                                   |  Z=-85
+    |       *                                                          |
+    |                                                                  |
+    |              [Aztec Theatre]                                     |  Z=-120
+    |                   *                                              |
+    |                                                                  |
+    |      [Casino]                                                    |  Z=-200
+    |         *                                                        |
+    +------------------------------------------------------------------+
+   X=-513                        X=-162                            X=185
+          WEST (-X) <---------------------------> EAST (+X)
+
+LEGEND - ENTERTAINMENT DISTRICT:
+----------------------------------
+  Android's Dungeon ....... (29, -1)      Comic book store
+  Aztec Theatre ........... (-130, -120)  Movie theater
+  Casino .................. (-355, -200)  Gambling establishment
+  Planet Hype ............. (-513, -85)   Restaurant
+  Docks ................... (-372, 38)    Waterfront
+  Krustylu Studios ........ (-325, 238)   TV studio
+  Observatory ............. (185, 477)    Frink's observatory
+
+
+================================================================================
+                      QUICK REFERENCE TABLE
+================================================================================
+
+LEVEL | MAP                    | PLAYABLE CHARACTER | TIME OF DAY
+------+------------------------+--------------------+-------------
+  1   | Suburban Springfield   | Homer              | Day
+  2   | Downtown Springfield   | Bart               | Day
+  3   | Entertainment District | Lisa               | Night
+  4   | Suburban Springfield   | Marge              | Dusk
+  5   | Downtown Springfield   | Apu                | Night
+  6   | Entertainment District | Bart               | Day
+  7   | Suburban Springfield   | Homer              | Halloween Night
+
+================================================================================
+                          END OF MAPS
+================================================================================

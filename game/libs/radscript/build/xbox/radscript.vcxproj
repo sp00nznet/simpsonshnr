@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ClInclude Include="..\..\inc\radfactory.hpp" />
+    <ClInclude Include="..\..\inc\radnamespace.hpp" />
+    <ClInclude Include="..\..\inc\radscript.hpp" />
+    <ClInclude Include="..\..\inc\radtypeinfo.hpp" />
+    <ClInclude Include="..\..\inc\radtypeinfoutil.hpp" />
+    <ClInclude Include="..\..\src\pch\pch.hpp" />
+    <ClInclude Include="..\..\src\typeinfo\win32\win32typeinfovfcall.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <SccProjectName>Perforce Project</SccProjectName>
+    <SccAuxPath />
+    <SccLocalPath>..\..</SccLocalPath>
+    <SccProvider>MSSCCI:Perforce SCM</SccProvider>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>17.0.36804.4</_ProjectFileVersion>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\factory\radfactory.cpp" />
+    <ClCompile Include="..\..\src\namespace\namespace.cpp" />
+    <ClCompile Include="..\..\src\pch\pch.cpp" />
+    <ClCompile Include="..\..\src\script\remotescript.cpp" />
+    <ClCompile Include="..\..\src\script\script.cpp" />
+    <ClCompile Include="..\..\src\typeinfoutil\typeinfodistributor.cpp" />
+    <ClCompile Include="..\..\src\typeinfoutil\typeinfoutil.cpp" />
+    <ClCompile Include="..\..\src\typeinfo\TypeInfoEnum.cpp" />
+    <ClCompile Include="..\..\src\typeinfo\typeinfoinstance.cpp" />
+    <ClCompile Include="..\..\src\typeinfo\typeinfointerface.cpp" />
+    <ClCompile Include="..\..\src\typeinfo\TypeInfoIntLiteral.cpp" />
+    <ClCompile Include="..\..\src\typeinfo\typeinfoloader.cpp" />
+    <ClCompile Include="..\..\src\typeinfo\typeinfomethod.cpp" />
+    <ClCompile Include="..\..\src\typeinfo\TypeInfoParam.cpp" />
+    <ClCompile Include="..\..\src\typeinfo\typeinfosystem.cpp" />
+    <ClCompile Include="..\..\src\typeinfo\win32\win32typeinfovfcall.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

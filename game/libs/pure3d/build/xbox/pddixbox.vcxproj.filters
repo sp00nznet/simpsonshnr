@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="interface">
+      <UniqueIdentifier>{5e2f5e75-3fa1-4aad-b7b3-567cff2c039f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="base">
+      <UniqueIdentifier>{ac76d88b-8a32-41d8-9b1f-afbc653c6a5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="xbox">
+      <UniqueIdentifier>{a375e261-308f-4f5a-aeef-0023c89e2b39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="xbox\shaders">
+      <UniqueIdentifier>{c8dbf9a9-4cda-4f0b-9487-3e7801bdc949}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="xbox\vsh">
+      <UniqueIdentifier>{9badc93f-8641-4bf1-98ab-2a75ce7837d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="xbox\psh">
+      <UniqueIdentifier>{a77be9aa-7fee-4746-9b8f-bd3c0b6a873c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\pddi\pddi.hpp">
+      <Filter>interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\pddienum.hpp">
+      <Filter>interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\pddiext.hpp">
+      <Filter>interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\pddishade.hpp">
+      <Filter>interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\pdditype.hpp">
+      <Filter>interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\pddixbox.hpp">
+      <Filter>interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\base\basecontext.hpp">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\base\baseshader.hpp">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\base\basetype.hpp">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\base\font.hpp">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\base\romans.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\xbox\context.hpp">
+      <Filter>xbox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\xbox\device.hpp">
+      <Filter>xbox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\xbox\direct3d.hpp">
+      <Filter>xbox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\xbox\display.hpp">
+      <Filter>xbox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\xbox\prim.hpp">
+      <Filter>xbox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\xbox\primstream.hpp">
+      <Filter>xbox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\xbox\state.hpp">
+      <Filter>xbox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\xbox\texture.hpp">
+      <Filter>xbox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\xbox\util.hpp">
+      <Filter>xbox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\xbox\vertprog.hpp">
+      <Filter>xbox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\xbox\shaders\bumpmap_Constants.h">
+      <Filter>xbox\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\xbox\shaders\bumpmapshader.hpp">
+      <Filter>xbox\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\xbox\shaders\bumpmapvertexshader.hpp">
+      <Filter>xbox\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\xbox\shaders\csrpshader.hpp">
+      <Filter>xbox\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\xbox\shaders\errorshader.hpp">
+      <Filter>xbox\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\xbox\shaders\layeredlmapshader.hpp">
+      <Filter>xbox\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\xbox\shaders\layeredshader.hpp">
+      <Filter>xbox\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\xbox\shaders\lightmapshader.hpp">
+      <Filter>xbox\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\xbox\shaders\pointspriteshader.hpp">
+      <Filter>xbox\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\xbox\shaders\projectedtextureshader.hpp">
+      <Filter>xbox\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\xbox\shaders\reflectshader.hpp">
+      <Filter>xbox\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\xbox\shaders\refractshader.hpp">
+      <Filter>xbox\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\xbox\shaders\shader.hpp">
+      <Filter>xbox\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\xbox\shaders\shaderdata.hpp">
+      <Filter>xbox\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\xbox\shaders\shadersetup.hpp">
+      <Filter>xbox\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\xbox\shaders\simpleshader.hpp">
+      <Filter>xbox\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\xbox\shaders\spheremapshader.hpp">
+      <Filter>xbox\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\xbox\shaders\toon2vertexshader.hpp">
+      <Filter>xbox\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\xbox\shaders\toonvertexshader.hpp">
+      <Filter>xbox\shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\pddi\xbox\shaders\ubershader.hpp">
+      <Filter>xbox\shaders</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\pddi\base\basecontext.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pddi\base\baseshader.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pddi\base\font.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pddi\base\pddiobj.cpp">
+      <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pddi\xbox\context.cpp">
+      <Filter>xbox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pddi\xbox\device.cpp">
+      <Filter>xbox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pddi\xbox\display.cpp">
+      <Filter>xbox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pddi\xbox\prim.cpp">
+      <Filter>xbox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pddi\xbox\primstream.cpp">
+      <Filter>xbox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pddi\xbox\state.cpp">
+      <Filter>xbox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pddi\xbox\texture.cpp">
+      <Filter>xbox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pddi\xbox\util.cpp">
+      <Filter>xbox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pddi\xbox\vertprog.cpp">
+      <Filter>xbox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pddi\xbox\shaders\bumpmapshader.cpp">
+      <Filter>xbox\shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pddi\xbox\shaders\bumpmapvertexshader.cpp">
+      <Filter>xbox\shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pddi\xbox\shaders\csrpshader.cpp">
+      <Filter>xbox\shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pddi\xbox\shaders\errorshader.cpp">
+      <Filter>xbox\shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pddi\xbox\shaders\layeredlmapshader.cpp">
+      <Filter>xbox\shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pddi\xbox\shaders\layeredshader.cpp">
+      <Filter>xbox\shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pddi\xbox\shaders\lightmapshader.cpp">
+      <Filter>xbox\shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pddi\xbox\shaders\pointspriteshader.cpp">
+      <Filter>xbox\shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pddi\xbox\shaders\projectedtextureshader.cpp">
+      <Filter>xbox\shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pddi\xbox\shaders\reflectshader.cpp">
+      <Filter>xbox\shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pddi\xbox\shaders\refractshader.cpp">
+      <Filter>xbox\shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pddi\xbox\shaders\shader.cpp">
+      <Filter>xbox\shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pddi\xbox\shaders\shaderdata.cpp">
+      <Filter>xbox\shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pddi\xbox\shaders\shadersetup.cpp">
+      <Filter>xbox\shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pddi\xbox\shaders\simpleshader.cpp">
+      <Filter>xbox\shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pddi\xbox\shaders\spheremapshader.cpp">
+      <Filter>xbox\shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pddi\xbox\shaders\toon2vertexshader.cpp">
+      <Filter>xbox\shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pddi\xbox\shaders\toonvertexshader.cpp">
+      <Filter>xbox\shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\pddi\xbox\shaders\ubershader.cpp">
+      <Filter>xbox\shaders</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\..\pddi\xbox\vsh\bumpmap.vsh">
+      <Filter>xbox\vsh</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\pddi\xbox\vsh\point_sprite.vsh">
+      <Filter>xbox\vsh</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\pddi\xbox\vsh\refract.vsh">
+      <Filter>xbox\vsh</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\pddi\xbox\vsh\skin.vsh">
+      <Filter>xbox\vsh</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\pddi\xbox\vsh\skin_csrp.vsh">
+      <Filter>xbox\vsh</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\pddi\xbox\vsh\skin_onebone.vsh">
+      <Filter>xbox\vsh</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\pddi\xbox\vsh\skin_onebone_csrp.vsh">
+      <Filter>xbox\vsh</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\pddi\xbox\vsh\skin_refract.vsh">
+      <Filter>xbox\vsh</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\pddi\xbox\vsh\skin_toon.vsh">
+      <Filter>xbox\vsh</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\pddi\xbox\vsh\spheremap.vsh">
+      <Filter>xbox\vsh</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\pddi\xbox\vsh\toon.vsh">
+      <Filter>xbox\vsh</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\pddi\xbox\vsh\toon2.vsh">
+      <Filter>xbox\vsh</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\pddi\xbox\vsh\util.vsh">
+      <Filter>xbox\vsh</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\pddi\xbox\psh\bumpmapshader.psh">
+      <Filter>xbox\psh</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\pddi\xbox\psh\csrpshader.psh">
+      <Filter>xbox\psh</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\pddi\xbox\psh\csrshader.psh">
+      <Filter>xbox\psh</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ClCompile Include="..\..\src\radload\hashtable.cpp" />
+    <ClCompile Include="..\..\src\radload\inventory.cpp" />
+    <ClCompile Include="..\..\src\radload\manager.cpp" />
+    <ClCompile Include="..\..\src\radload\object.cpp" />
+    <ClCompile Include="..\..\src\radload\queue.cpp" />
+    <ClCompile Include="..\..\src\radload\request.cpp" />
+    <ClCompile Include="..\..\src\radload\stream.cpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <SccProjectName>Perforce Project</SccProjectName>
+    <SccAuxPath />
+    <SccLocalPath>..\..</SccLocalPath>
+    <SccProvider>MSSCCI:Perforce SCM</SccProvider>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>17.0.36804.4</_ProjectFileVersion>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\inc\radload\loader.hpp" />
+    <ClInclude Include="..\..\inc\radload\radload.hpp" />
+    <ClInclude Include="..\..\inc\radload\radloadconfig.hpp" />
+    <ClInclude Include="..\..\inc\radload\utility\hashtable.hpp" />
+    <ClInclude Include="..\..\inc\radload\utility\inventory.hpp" />
+    <ClInclude Include="..\..\inc\radload\utility\object.hpp" />
+    <ClInclude Include="..\..\inc\radload\utility\queue.hpp" />
+    <ClInclude Include="..\..\inc\radload\utility\stream.hpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

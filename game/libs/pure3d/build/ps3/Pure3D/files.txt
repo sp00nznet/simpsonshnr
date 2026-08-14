@@ -1,0 +1,198 @@
+##########################################################################
+#
+#  Files specific: PS3 Pure3D library build configuration
+#
+##########################################################################
+
+####################
+# General defines
+####################
+
+    ############################################################################
+    # Relative path the FTech root directory
+    ############################################################################
+
+	ROOTDIR	      = ../../../..
+
+    ############################################################################
+    # Output file directory
+    ############################################################################
+
+	LIBRARYDIR    = ../../lib
+
+    ############################################################################
+    # Output file name (don't include extension or the configuration suffix)
+    ############################################################################
+
+	TARGET        = $(LIBRARYDIR)/pure3d
+
+    ############################################################################
+    # Output file type (EXECUTABLE or LIBRARY)
+    ############################################################################
+
+	TARGETTYPE    = LIBRARY
+
+    ############################################################################
+    # Radbuild defined platform specific configuration files
+    ############################################################################
+
+    include $(ROOTDIR)/radbuild/config.ps3
+
+    ############################################################################
+    # General build dependencies.
+    ############################################################################
+
+    GENERAL_DEPENDS = files.txt
+
+################################################################################
+# File specification
+################################################################################
+
+    ############################################################################
+    # Source file directories
+    ############################################################################
+
+	SOURCEDIR     = $(ROOTDIR)/pure3d/p3d
+
+    ############################################################################
+    # Include file directories
+    ############################################################################
+
+	INCLUDEDIR += \
+        $(ROOTDIR) \
+		$(ROOTDIR)/../code \
+		$(ROOTDIR)/radcore/inc \
+		$(ROOTDIR)/radcontent/inc \
+		$(ROOTDIR)/radmath \
+		$(ROOTDIR)/pure3d \
+		$(ROOTDIR)/pure3d/lib/libpng \
+		$(ROOTDIR)/pure3d/lib/zlib \
+
+################################################################################
+# Compile settings
+################################################################################
+
+    DEFINES += 	PNG_USER_MEM_SUPPORTED \
+    			LZO_NO_SYS_TYPES_H \
+
+    CFLAGS +=
+
+    CXXFLAGS +=
+
+################################################################################
+# Source files - PS3 Pure3D implementation
+################################################################################
+
+# Platform-specific sources
+SOURCEFILES = \
+	platform/ps3/plat_filemap \
+	platform/ps3/platform \
+
+# core sources
+SOURCEFILES += \
+	ambientlight \
+	billboardobject \
+	bmp \
+	camera \
+	cameraloader \
+	chunkfile \
+	context \
+	debugdraw \
+	directionallight \
+	displaylist \
+	drawable \
+	entity \
+	error \
+	file \
+	fileftt \
+	font \
+	gameattr \
+	geometry \
+	image \
+	imageconverter \
+	imagefactory \
+	imagefont \
+	inventory \
+	light \
+	lightloader \
+	lightschooser \
+	loaders \
+	locator \
+	loadmanager \
+	lzr \
+	matrixstack \
+	memory \
+	memorysection \
+	memheap \
+	mipmapfilter \
+	pointcamera \
+	pointlight \
+	png \
+	primgroup \
+	rawimage \
+	refcounted \
+	shader \
+	sprite \
+	spotlight \
+	table \
+	targa \
+	textdataparser \
+	textstring \
+	texture \
+	texturefont \
+	unicode \
+	utility \
+	vectorcamera \
+	vertexlist \
+	view \
+
+# anim sources
+SOURCEFILES += \
+	anim/animate \
+	anim/animatedobject \
+	anim/billboardobjectanimation \
+	anim/cameraanimation \
+	anim/channel \
+	anim/compositedrawable \
+	anim/drawablepose \
+	anim/event \
+	anim/eventanimation \
+	anim/expressionoffsets \
+	anim/expression \
+	anim/expressionanimation \
+	anim/lightanimation \
+	anim/multicontroller \
+	anim/polyskin \
+	anim/pose \
+	anim/poseanimation \
+	anim/sequencer \
+	anim/skeleton \
+	anim/shaderanimation \
+	anim/textureanimation \
+	anim/vertexoffsetexpression \
+	anim/visibilityanimation \
+	anim/vertexanimcontroller \
+	anim/vertexanimkey \
+	anim/vertexanimobject \
+
+# effects sources
+SOURCEFILES += \
+	effects/effect \
+	effects/optic \
+	effects/opticlensflare \
+	effects/opticloader \
+	effects/particlepool \
+	effects/particlearray \
+	effects/particleemitter \
+	effects/particlegenerator \
+	effects/particleloader \
+	effects/particlesystem \
+	effects/particletype \
+	effects/particleutility \
+	effects/transitionmanager \
+
+# scenegraph sources
+SOURCEFILES += \
+	scenegraph/nodeanimation \
+	scenegraph/scenegraph \
+

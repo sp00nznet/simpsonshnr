@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ClCompile Include="..\..\src\FeApp.cpp" />
+    <ClCompile Include="..\..\src\FeBoundedDrawable.cpp" />
+    <ClCompile Include="..\..\src\FeChunkHandler.cpp" />
+    <ClCompile Include="..\..\src\FeDrawable.cpp" />
+    <ClCompile Include="..\..\src\FeEntity.cpp" />
+    <ClCompile Include="..\..\src\FeGroup.cpp" />
+    <ClCompile Include="..\..\src\FeLanguage.cpp" />
+    <ClCompile Include="..\..\src\FeLayer.cpp" />
+    <ClCompile Include="..\..\src\FeLoaders.cpp" />
+    <ClCompile Include="..\..\src\FeMovie.cpp" />
+    <ClCompile Include="..\..\src\FeOwner.cpp" />
+    <ClCompile Include="..\..\src\FePage.cpp" />
+    <ClCompile Include="..\..\src\FeParent.cpp" />
+    <ClCompile Include="..\..\src\FePolygon.cpp" />
+    <ClCompile Include="..\..\src\FeProject.cpp" />
+    <ClCompile Include="..\..\src\FePure3dObject.cpp" />
+    <ClCompile Include="..\..\src\FeScreen.cpp" />
+    <ClCompile Include="..\..\src\FeSprite.cpp" />
+    <ClCompile Include="..\..\src\FeText.cpp" />
+    <ClCompile Include="..\..\src\FeTextBible.cpp" />
+    <ClCompile Include="..\..\src\FeTextStyle.cpp" />
+    <ClCompile Include="..\..\src\ResourceManager\FeResourceManager.cpp" />
+    <ClCompile Include="..\..\src\scrooby\App.cpp" />
+    <ClCompile Include="..\..\src\strings\pcstring.cpp" />
+    <ClCompile Include="..\..\src\strings\stricmp.cpp" />
+    <ClCompile Include="..\..\src\strings\UnicodeString.cpp" />
+    <ClCompile Include="..\..\src\tLinearTable.cpp" />
+    <ClCompile Include="..\..\src\utility\BufferReader.cpp" />
+    <ClCompile Include="..\..\src\utility\debugMessages.cpp" />
+    <ClCompile Include="..\..\src\utility\EnumConversion.cpp" />
+    <ClCompile Include="..\..\src\utility\Util.cpp" />
+    <ClCompile Include="..\..\src\xml\XMLParser.cpp" />
+    <ClCompile Include="..\..\src\xml\XMLTree.cpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <SccProjectName>Perforce Project</SccProjectName>
+    <SccAuxPath />
+    <SccLocalPath>..\..</SccLocalPath>
+    <SccProvider>MSSCCI:Perforce SCM</SccProvider>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>17.0.36804.4</_ProjectFileVersion>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\inc\App.h" />
+    <ClInclude Include="..\..\inc\BoundedDrawable.h" />
+    <ClInclude Include="..\..\inc\Drawable.h" />
+    <ClInclude Include="..\..\inc\Enums.h" />
+    <ClInclude Include="..\..\inc\Group.h" />
+    <ClInclude Include="..\..\inc\Layer.h" />
+    <ClInclude Include="..\..\inc\Movie.h" />
+    <ClInclude Include="..\..\inc\Owner.h" />
+    <ClInclude Include="..\..\inc\Page.h" />
+    <ClInclude Include="..\..\inc\Polygon.h" />
+    <ClInclude Include="..\..\inc\Project.h" />
+    <ClInclude Include="..\..\inc\Pure3dObject.h" />
+    <ClInclude Include="..\..\inc\ResourceManager.h" />
+    <ClInclude Include="..\..\inc\Screen.h" />
+    <ClInclude Include="..\..\inc\Scrooby.hpp" />
+    <ClInclude Include="..\..\inc\Sprite.h" />
+    <ClInclude Include="..\..\inc\Text.h" />
+    <ClInclude Include="..\..\inc\TextBible.h" />
+    <ClInclude Include="..\..\src\FeApp.h" />
+    <ClInclude Include="..\..\src\FeBoundedDrawable.h" />
+    <ClInclude Include="..\..\src\FeCharMap.h" />
+    <ClInclude Include="..\..\src\FeChunkHandler.h" />
+    <ClInclude Include="..\..\src\FeDrawable.h" />
+    <ClInclude Include="..\..\src\FeEntity.h" />
+    <ClInclude Include="..\..\src\FeGroup.h" />
+    <ClInclude Include="..\..\src\FeLanguage.h" />
+    <ClInclude Include="..\..\src\FeLayer.h" />
+    <ClInclude Include="..\..\src\FeLoaders.h" />
+    <ClInclude Include="..\..\src\FeLoadTags.h" />
+    <ClInclude Include="..\..\src\FeMovie.h" />
+    <ClInclude Include="..\..\src\FeOwner.h" />
+    <ClInclude Include="..\..\src\FePage.h" />
+    <ClInclude Include="..\..\src\FeParent.h" />
+    <ClInclude Include="..\..\src\FePolygon.h" />
+    <ClInclude Include="..\..\src\FeProject.h" />
+    <ClInclude Include="..\..\src\FePure3dObject.h" />
+    <ClInclude Include="..\..\src\FeScreen.h" />
+    <ClInclude Include="..\..\src\FeSprite.h" />
+    <ClInclude Include="..\..\src\FeText.h" />
+    <ClInclude Include="..\..\src\FeTextBible.h" />
+    <ClInclude Include="..\..\src\FeTextStyle.h" />
+    <ClInclude Include="..\..\src\ResourceManager\FeResourceManager.h" />
+    <ClInclude Include="..\..\src\strings\pcstring.h" />
+    <ClInclude Include="..\..\src\strings\stricmp.h" />
+    <ClInclude Include="..\..\src\strings\unicodeString.h" />
+    <ClInclude Include="..\..\src\tLinearTable.h" />
+    <ClInclude Include="..\..\src\utility\BufferReader.h" />
+    <ClInclude Include="..\..\src\utility\debugMessages.h" />
+    <ClInclude Include="..\..\src\utility\EnumConversion.h" />
+    <ClInclude Include="..\..\src\utility\memory.h" />
+    <ClInclude Include="..\..\src\utility\rVector.hpp" />
+    <ClInclude Include="..\..\src\utility\Util.h" />
+    <ClInclude Include="..\..\src\xml\XMLParser.h" />
+    <ClInclude Include="..\..\src\xml\XMLTree.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="includePaths.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

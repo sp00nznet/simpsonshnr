@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ClCompile Include="..\..\src\animation.cpp" />
+    <ClCompile Include="..\..\src\bank.cpp" />
+    <ClCompile Include="..\..\src\basebank.cpp" />
+    <ClCompile Include="..\..\src\blend.cpp" />
+    <ClCompile Include="..\..\src\blendtemplate.cpp" />
+    <ClCompile Include="..\..\src\constants.cpp" />
+    <ClCompile Include="..\..\src\driver.cpp" />
+    <ClCompile Include="..\..\src\engine.cpp" />
+    <ClCompile Include="..\..\src\foot.cpp" />
+    <ClCompile Include="..\..\src\footblenddriver.cpp" />
+    <ClCompile Include="..\..\src\footblender.cpp" />
+    <ClCompile Include="..\..\src\footplanter.cpp" />
+    <ClCompile Include="..\..\src\internalanimation.cpp" />
+    <ClCompile Include="..\..\src\jointblenddriver.cpp" />
+    <ClCompile Include="..\..\src\jointblender.cpp" />
+    <ClCompile Include="..\..\src\load.cpp" />
+    <ClCompile Include="..\..\src\locomotion.cpp" />
+    <ClCompile Include="..\..\src\partition.cpp" />
+    <ClCompile Include="..\..\src\puppet.cpp" />
+    <ClCompile Include="..\..\src\replay.cpp" />
+    <ClCompile Include="..\..\src\replayblenddriver.cpp" />
+    <ClCompile Include="..\..\src\replayblender.cpp" />
+    <ClCompile Include="..\..\src\rig.cpp" />
+    <ClCompile Include="..\..\src\root.cpp" />
+    <ClCompile Include="..\..\src\rootblenddriver.cpp" />
+    <ClCompile Include="..\..\src\rootblender.cpp" />
+    <ClCompile Include="..\..\src\scriptreader.cpp" />
+    <ClCompile Include="..\..\src\scriptwriter.cpp" />
+    <ClCompile Include="..\..\src\synchronization.cpp" />
+    <ClCompile Include="..\..\src\transition.cpp" />
+    <ClCompile Include="..\..\src\utility.cpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <SccProjectName>Perforce Project</SccProjectName>
+    <SccAuxPath />
+    <SccLocalPath>..\..</SccLocalPath>
+    <SccProvider>MSSCCI:Perforce SCM</SccProvider>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>17.0.36804.4</_ProjectFileVersion>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\inc\choreo\animation.hpp" />
+    <ClInclude Include="..\..\inc\choreo\bank.hpp" />
+    <ClInclude Include="..\..\inc\choreo\basebank.hpp" />
+    <ClInclude Include="..\..\inc\choreo\blend.hpp" />
+    <ClInclude Include="..\..\inc\choreo\blendtemplate.hpp" />
+    <ClInclude Include="..\..\inc\choreo\buildconfig.hpp" />
+    <ClInclude Include="..\..\inc\choreo\constants.hpp" />
+    <ClInclude Include="..\..\inc\choreo\driver.hpp" />
+    <ClInclude Include="..\..\inc\choreo\engine.hpp" />
+    <ClInclude Include="..\..\inc\choreo\foot.hpp" />
+    <ClInclude Include="..\..\inc\choreo\footblenddriver.hpp" />
+    <ClInclude Include="..\..\inc\choreo\footblender.hpp" />
+    <ClInclude Include="..\..\inc\choreo\footplanter.hpp" />
+    <ClInclude Include="..\..\inc\choreo\internalanimation.hpp" />
+    <ClInclude Include="..\..\inc\choreo\jointblenddriver.hpp" />
+    <ClInclude Include="..\..\inc\choreo\jointblender.hpp" />
+    <ClInclude Include="..\..\inc\choreo\load.hpp" />
+    <ClInclude Include="..\..\inc\choreo\locomotion.hpp" />
+    <ClInclude Include="..\..\inc\choreo\partition.hpp" />
+    <ClInclude Include="..\..\inc\choreo\puppet.hpp" />
+    <ClInclude Include="..\..\inc\choreo\replay.hpp" />
+    <ClInclude Include="..\..\inc\choreo\replayblenddriver.hpp" />
+    <ClInclude Include="..\..\inc\choreo\replayblender.hpp" />
+    <ClInclude Include="..\..\inc\choreo\rig.hpp" />
+    <ClInclude Include="..\..\inc\choreo\root.hpp" />
+    <ClInclude Include="..\..\inc\choreo\rootblenddriver.hpp" />
+    <ClInclude Include="..\..\inc\choreo\rootblender.hpp" />
+    <ClInclude Include="..\..\inc\choreo\scriptreader.hpp" />
+    <ClInclude Include="..\..\inc\choreo\scriptwriter.hpp" />
+    <ClInclude Include="..\..\inc\choreo\synchronization.hpp" />
+    <ClInclude Include="..\..\inc\choreo\transition.hpp" />
+    <ClInclude Include="..\..\inc\choreo\utility.hpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

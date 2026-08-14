@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="inc">
+      <UniqueIdentifier>{9325a3de-a63c-4c80-9903-9376a51d9c1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{5ba4eb36-5788-448e-abf7-0e3cc5bc0e60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\pch">
+      <UniqueIdentifier>{55ec2e77-0c35-4ed6-b874-cd0a8120a1e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\math">
+      <UniqueIdentifier>{1a076c6e-aedd-41e1-bda5-b56172f91cc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\hal">
+      <UniqueIdentifier>{75a3d6ab-e2b8-4ba9-82a2-e1c5a1696f5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\hal\xbox">
+      <UniqueIdentifier>{1a3086f0-939b-47b8-a537-1a7d57087bd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\hal\common">
+      <UniqueIdentifier>{793a9cf6-eae9-4234-a6b9-2ecbbe307ed9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\radsound">
+      <UniqueIdentifier>{bf0d7c2e-e016-4ef0-9995-d27648d98bb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\common|">
+      <UniqueIdentifier>{0137eb02-a9bd-4031-a70a-aeee9bd952d2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\inc\radsound.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\radsound_hal.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\radsound_xbox.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\radsoundfile.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\inc\radsoundmath.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\pch\pch.hpp">
+      <Filter>src\pch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\hal\xbox\buffer.hpp">
+      <Filter>src\hal\xbox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\hal\xbox\bufferasyncloader.hpp">
+      <Filter>src\hal\xbox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\hal\xbox\effect.hpp">
+      <Filter>src\hal\xbox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\hal\xbox\listener.hpp">
+      <Filter>src\hal\xbox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\hal\xbox\positionalgroup.hpp">
+      <Filter>src\hal\xbox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\hal\xbox\radsoundxbox.hpp">
+      <Filter>src\hal\xbox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\hal\xbox\rsdeffects.hpp">
+      <Filter>src\hal\xbox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\hal\xbox\soundsystem.hpp">
+      <Filter>src\hal\xbox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\hal\xbox\voice.hpp">
+      <Filter>src\hal\xbox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\hal\xbox\wmafiledatasource.hpp">
+      <Filter>src\hal\xbox</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\hal\common\audioformat.hpp">
+      <Filter>src\hal\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\hal\common\banner.hpp">
+      <Filter>src\hal\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\hal\common\memoryregion.hpp">
+      <Filter>src\hal\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\hal\common\rolloff.hpp">
+      <Filter>src\hal\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\radsound\buffereddatasource.hpp">
+      <Filter>src\radsound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\radsound\clip.hpp">
+      <Filter>src\radsound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\radsound\clipplayer.hpp">
+      <Filter>src\radsound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\radsound\datacache.hpp">
+      <Filter>src\radsound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\radsound\memorydatasource.hpp">
+      <Filter>src\radsound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\radsound\memoryspaceobject.hpp">
+      <Filter>src\radsound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\radsound\radicaladpcm.hpp">
+      <Filter>src\radsound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\radsound\rsdfiledatasource.hpp">
+      <Filter>src\radsound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\radsound\stitcheddatasource.hpp">
+      <Filter>src\radsound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\radsound\streamplayer.hpp">
+      <Filter>src\radsound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\common\radsoundobject.hpp">
+      <Filter>src\common|</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\common\radsoundupdatableobject.hpp">
+      <Filter>src\common|</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\pch\pch.cpp">
+      <Filter>src\pch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\math\radsoundmath.cpp">
+      <Filter>src\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\hal\xbox\buffer.cpp">
+      <Filter>src\hal\xbox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\hal\xbox\bufferasyncloader.cpp">
+      <Filter>src\hal\xbox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\hal\xbox\effect.cpp">
+      <Filter>src\hal\xbox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\hal\xbox\listener.cpp">
+      <Filter>src\hal\xbox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\hal\xbox\positionalgroup.cpp">
+      <Filter>src\hal\xbox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\hal\xbox\radsoundxbox.cpp">
+      <Filter>src\hal\xbox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\hal\xbox\soundsystem.cpp">
+      <Filter>src\hal\xbox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\hal\xbox\voice.cpp">
+      <Filter>src\hal\xbox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\hal\xbox\wmafiledatasource.cpp">
+      <Filter>src\hal\xbox</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\hal\common\audioformat.cpp">
+      <Filter>src\hal\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\hal\common\banner.cpp">
+      <Filter>src\hal\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\hal\common\memoryregion.cpp">
+      <Filter>src\hal\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\hal\common\radsoundfile.cpp">
+      <Filter>src\hal\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\hal\common\rolloff.cpp">
+      <Filter>src\hal\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\radsound\buffereddatasource.cpp">
+      <Filter>src\radsound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\radsound\clip.cpp">
+      <Filter>src\radsound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\radsound\clipplayer.cpp">
+      <Filter>src\radsound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\radsound\datacache.cpp">
+      <Filter>src\radsound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\radsound\memorydatasource.cpp">
+      <Filter>src\radsound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\radsound\memoryspaceobject.cpp">
+      <Filter>src\radsound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\radsound\radicaladpcm.cpp">
+      <Filter>src\radsound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\radsound\rsdfiledatasource.cpp">
+      <Filter>src\radsound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\radsound\stitcheddatasource.cpp">
+      <Filter>src\radsound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\radsound\streamplayer.cpp">
+      <Filter>src\radsound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\common\radsoundobject.cpp">
+      <Filter>src\common|</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\common\radsoundupdatableobject.cpp">
+      <Filter>src\common|</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\releasenotes.txt" />
+  </ItemGroup>
+</Project>

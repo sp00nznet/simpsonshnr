@@ -1,0 +1,205 @@
+##########################################################################
+#
+#  Platform Specific Configuration : PS3 Configuration files
+#
+##########################################################################
+#
+# Input Variables:
+#
+#	CONFIG		: build define
+#	TARGET		: output target file name (ie: radcore)
+#	TARGETTYPE	: file extension define (library or executable)
+#
+##########################################################################
+
+########################################################################
+#
+# Setup build type
+#
+########################################################################
+
+ifeq ($(CONFIG), DEBUG)
+EXT = p3d
+DEFINES	+= RAD_DEBUG _DEBUG
+OBJDIR = Debug
+endif
+
+ifeq ($(CONFIG), RELEASE)
+EXT = p3r
+DEFINES	+= NRAD_DEBUG RAD_RELEASE
+OBJDIR = Release
+endif
+
+ifeq ($(CONFIG), TUNE)
+EXT = p3t
+DEFINES += NRAD_DEBUG RAD_TUNE
+OBJDIR = Tune
+endif
+
+########################################################################
+#
+# Setup cross compiler for target platform.
+# PS3 SDK 3.40 - Split between Toolchain and SDK directories
+#
+########################################################################
+
+# Base SDK path
+PS3SDK_BASE = D:/PS3.Full.3.40.SDK.PS3-DUPLEX
+
+# Toolchain (compilers) - contains host-win32/ppu/bin with ppu-lv2-gcc etc.
+PS3_TOOLCHAIN = $(PS3SDK_BASE)/[134]-PS3_Toolchain_411-Win_340_001/cell
+
+# SDK (includes, libraries) - contains target/ppu/include and target/ppu/lib
+PS3_SDK = $(PS3SDK_BASE)/[132]-PS3_SDK-340_001/cell
+
+# SN Systems tools (linker) - needed for ps3ppuld.exe
+PS3_SN = $(PS3_SDK)/host-win32/sn/bin
+
+# Add SN tools to PATH so collect2 can find ps3ppuld
+export PATH := $(PS3_SN):$(PATH)
+
+PLATFORM = PS3
+
+DEFINES  += RAD_PS3 PLAT_PS3 RAD_CONSOLE __CELLOS_LV2__
+
+########################################################################
+#
+# Setup file extension name
+#
+########################################################################
+
+ifeq ($(TARGETTYPE),LIBRARY)
+PLAT_EXT  = a
+else
+PLAT_EXT  = elf
+endif
+
+########################################################################
+#
+# Compiler Tools
+#
+########################################################################
+
+# PPU compiler tools from Toolchain
+AS      = $(PS3_TOOLCHAIN)/host-win32/ppu/bin/ppu-lv2-as.exe
+CC      = $(PS3_TOOLCHAIN)/host-win32/ppu/bin/ppu-lv2-gcc.exe
+CXX     = $(PS3_TOOLCHAIN)/host-win32/ppu/bin/ppu-lv2-g++.exe
+DP      = $(ROOTDIR)/radbuild/GlobalTools/makedepend.exe
+LD      = $(PS3_TOOLCHAIN)/host-win32/ppu/bin/ppu-lv2-g++.exe
+AR	    = $(PS3_TOOLCHAIN)/host-win32/ppu/bin/ppu-lv2-ar.exe
+RANLIB	= $(PS3_TOOLCHAIN)/host-win32/ppu/bin/ppu-lv2-ranlib.exe
+OBJDUMP = $(PS3_TOOLCHAIN)/host-win32/ppu/bin/ppu-lv2-objdump.exe
+PERL    = $(ROOTDIR)/radbuild/GlobalTools/Perl
+FIXDEP 	= $(ROOTDIR)/radbuild/fixdep.pl
+ARFLAGS	= cr
+
+# SPU compiler tools (for future SPU support)
+SPU_CC  = $(PS3_TOOLCHAIN)/host-win32/spu/bin/spu-lv2-gcc.exe
+SPU_CXX = $(PS3_TOOLCHAIN)/host-win32/spu/bin/spu-lv2-g++.exe
+
+#####################################################################
+#
+# Warning flags for C programs
+#
+#####################################################################
+
+CWARNINGS = \
+	-Wall \
+	-Wno-unused \
+
+CXXWARNINGS = $(CWARNINGS) \
+	-Wno-non-virtual-dtor \
+
+#####################################################################
+#
+# DEPENDENCIES FLAGS
+#
+#####################################################################
+
+DPFLAG   = -D__CELLOS_LV2__
+DPPREPROCFLAGS = $(CFLAGS)
+DPPREPROCXXFLAGS = $(CXXFLAGS)
+
+#####################################################################
+#
+# COMPILE FLAGS
+#
+#####################################################################
+
+ifeq ($(CONFIG), DEBUG)
+COMPILERFLAGS = -g -O0
+endif
+
+ifeq ($(CONFIG), RELEASE)
+COMPILERFLAGS = -O2
+endif
+
+ifeq ($(CONFIG), TUNE)
+COMPILERFLAGS = -g -O2
+endif
+
+# Common flags
+# Note: -fpermissive needed for older C++ code with GCC 4.x template lookup rules
+# Note: RTTI needed for typeid usage in choreo, radscript, etc.
+COMMONFLAGS = -c -fno-exceptions -fpermissive
+
+CFLAGS  = $(COMMONFLAGS) $(CWARNINGS) $(COMPILERFLAGS)
+CXXFLAGS = $(COMMONFLAGS) $(CXXWARNINGS) $(COMPILERFLAGS)
+
+#####################################################################
+#
+# AS FLAGS
+#
+#####################################################################
+
+ASFLAGS = -c
+
+#####################################################################
+#
+# LINKER FLAGS
+#
+#####################################################################
+
+LIBDIRS	+= -L$(PS3_SDK)/target/ppu/lib
+
+ifeq ($(MAPFILE), TRUE)
+LDFLAGS = $(LIBDIRS) -Wl,-Map,$(TARGET).map
+else
+LDFLAGS = $(LIBDIRS)
+endif
+
+#####################################################################
+#
+# PS3 SDK INCLUDES & LIBRARIES
+#
+#####################################################################
+
+INCLUDEDIR += \
+	$(PS3_SDK)/target/ppu/include \
+	$(PS3_SDK)/target/common/include \
+	$(PS3_TOOLCHAIN)/target/ppu/include \
+
+# PS3 system libraries (using stub libraries for linking)
+# Note: Use libc.a (not libc_stub.a) since PSGL requires full libc
+SYSTEMLIBS += \
+	$(PS3_SDK)/target/ppu/lib/PSGL/RSX/debug/libPSGL.a \
+	$(PS3_SDK)/target/ppu/lib/PSGL/RSX/debug/libPSGLU.a \
+	$(PS3_SDK)/target/ppu/lib/PSGL/RSX/debug/libPSGLcgc.a \
+	$(PS3_SDK)/target/ppu/lib/libresc_stub.a \
+	$(PS3_SDK)/target/ppu/lib/libdbgfont.a \
+	$(PS3_SDK)/target/ppu/lib/libpngdec_stub.a \
+	$(PS3_SDK)/target/ppu/lib/libc.a \
+	$(PS3_SDK)/target/ppu/lib/libm.a \
+	$(PS3_SDK)/target/ppu/lib/libstdc++.a \
+	$(PS3_SDK)/target/ppu/lib/libsysmodule_stub.a \
+	$(PS3_SDK)/target/ppu/lib/libsysutil_stub.a \
+	$(PS3_SDK)/target/ppu/lib/libio_stub.a \
+	$(PS3_SDK)/target/ppu/lib/libfs_stub.a \
+	$(PS3_SDK)/target/ppu/lib/libgcm_cmd.a \
+	$(PS3_SDK)/target/ppu/lib/libgcm_sys_stub.a \
+	$(PS3_SDK)/target/ppu/lib/libaudio_stub.a \
+	$(PS3_SDK)/target/ppu/lib/libmixer.a \
+	$(PS3_SDK)/target/ppu/lib/libspurs_stub.a \
+	$(PS3_SDK)/target/ppu/lib/librtc_stub.a \
+	$(PS3_SDK)/target/ppu/lib/libcgc.a \
+

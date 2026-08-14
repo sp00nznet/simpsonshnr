@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ClInclude Include="..\..\pddi\base\basecontext.hpp" />
+    <ClInclude Include="..\..\pddi\base\baseshader.hpp" />
+    <ClInclude Include="..\..\pddi\base\basetype.hpp" />
+    <ClInclude Include="..\..\pddi\base\font.hpp" />
+    <ClInclude Include="..\..\pddi\base\romans.h" />
+    <ClInclude Include="..\..\pddi\pddi.hpp" />
+    <ClInclude Include="..\..\pddi\pddienum.hpp" />
+    <ClInclude Include="..\..\pddi\pddiext.hpp" />
+    <ClInclude Include="..\..\pddi\pddishade.hpp" />
+    <ClInclude Include="..\..\pddi\pdditype.hpp" />
+    <ClInclude Include="..\..\pddi\pddixbox.hpp" />
+    <ClInclude Include="..\..\pddi\xbox\context.hpp" />
+    <ClInclude Include="..\..\pddi\xbox\device.hpp" />
+    <ClInclude Include="..\..\pddi\xbox\direct3d.hpp" />
+    <ClInclude Include="..\..\pddi\xbox\display.hpp" />
+    <ClInclude Include="..\..\pddi\xbox\prim.hpp" />
+    <ClInclude Include="..\..\pddi\xbox\primstream.hpp" />
+    <ClInclude Include="..\..\pddi\xbox\shaders\bumpmapshader.hpp" />
+    <ClInclude Include="..\..\pddi\xbox\shaders\bumpmapvertexshader.hpp" />
+    <ClInclude Include="..\..\pddi\xbox\shaders\bumpmap_Constants.h" />
+    <ClInclude Include="..\..\pddi\xbox\shaders\csrpshader.hpp" />
+    <ClInclude Include="..\..\pddi\xbox\shaders\errorshader.hpp" />
+    <ClInclude Include="..\..\pddi\xbox\shaders\layeredlmapshader.hpp" />
+    <ClInclude Include="..\..\pddi\xbox\shaders\layeredshader.hpp" />
+    <ClInclude Include="..\..\pddi\xbox\shaders\lightmapshader.hpp" />
+    <ClInclude Include="..\..\pddi\xbox\shaders\pointspriteshader.hpp" />
+    <ClInclude Include="..\..\pddi\xbox\shaders\projectedtextureshader.hpp" />
+    <ClInclude Include="..\..\pddi\xbox\shaders\reflectshader.hpp" />
+    <ClInclude Include="..\..\pddi\xbox\shaders\refractshader.hpp" />
+    <ClInclude Include="..\..\pddi\xbox\shaders\shader.hpp" />
+    <ClInclude Include="..\..\pddi\xbox\shaders\shaderdata.hpp" />
+    <ClInclude Include="..\..\pddi\xbox\shaders\shadersetup.hpp" />
+    <ClInclude Include="..\..\pddi\xbox\shaders\simpleshader.hpp" />
+    <ClInclude Include="..\..\pddi\xbox\shaders\spheremapshader.hpp" />
+    <ClInclude Include="..\..\pddi\xbox\shaders\toon2vertexshader.hpp" />
+    <ClInclude Include="..\..\pddi\xbox\shaders\toonvertexshader.hpp" />
+    <ClInclude Include="..\..\pddi\xbox\shaders\ubershader.hpp" />
+    <ClInclude Include="..\..\pddi\xbox\state.hpp" />
+    <ClInclude Include="..\..\pddi\xbox\texture.hpp" />
+    <ClInclude Include="..\..\pddi\xbox\util.hpp" />
+    <ClInclude Include="..\..\pddi\xbox\vertprog.hpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <SccProjectName>Perforce Project</SccProjectName>
+    <SccAuxPath />
+    <SccLocalPath>..\..</SccLocalPath>
+    <SccProvider>MSSCCI:Perforce SCM</SccProvider>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>17.0.36804.4</_ProjectFileVersion>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\pddi\base\basecontext.cpp" />
+    <ClCompile Include="..\..\pddi\base\baseshader.cpp" />
+    <ClCompile Include="..\..\pddi\base\font.cpp" />
+    <ClCompile Include="..\..\pddi\base\pddiobj.cpp" />
+    <ClCompile Include="..\..\pddi\xbox\context.cpp" />
+    <ClCompile Include="..\..\pddi\xbox\device.cpp" />
+    <ClCompile Include="..\..\pddi\xbox\display.cpp" />
+    <ClCompile Include="..\..\pddi\xbox\prim.cpp" />
+    <ClCompile Include="..\..\pddi\xbox\primstream.cpp" />
+    <ClCompile Include="..\..\pddi\xbox\shaders\bumpmapshader.cpp" />
+    <ClCompile Include="..\..\pddi\xbox\shaders\bumpmapvertexshader.cpp" />
+    <ClCompile Include="..\..\pddi\xbox\shaders\csrpshader.cpp" />
+    <ClCompile Include="..\..\pddi\xbox\shaders\errorshader.cpp" />
+    <ClCompile Include="..\..\pddi\xbox\shaders\layeredlmapshader.cpp" />
+    <ClCompile Include="..\..\pddi\xbox\shaders\layeredshader.cpp" />
+    <ClCompile Include="..\..\pddi\xbox\shaders\lightmapshader.cpp" />
+    <ClCompile Include="..\..\pddi\xbox\shaders\pointspriteshader.cpp" />
+    <ClCompile Include="..\..\pddi\xbox\shaders\projectedtextureshader.cpp" />
+    <ClCompile Include="..\..\pddi\xbox\shaders\reflectshader.cpp" />
+    <ClCompile Include="..\..\pddi\xbox\shaders\refractshader.cpp" />
+    <ClCompile Include="..\..\pddi\xbox\shaders\shader.cpp" />
+    <ClCompile Include="..\..\pddi\xbox\shaders\shaderdata.cpp" />
+    <ClCompile Include="..\..\pddi\xbox\shaders\shadersetup.cpp" />
+    <ClCompile Include="..\..\pddi\xbox\shaders\simpleshader.cpp" />
+    <ClCompile Include="..\..\pddi\xbox\shaders\spheremapshader.cpp" />
+    <ClCompile Include="..\..\pddi\xbox\shaders\toon2vertexshader.cpp" />
+    <ClCompile Include="..\..\pddi\xbox\shaders\toonvertexshader.cpp" />
+    <ClCompile Include="..\..\pddi\xbox\shaders\ubershader.cpp" />
+    <ClCompile Include="..\..\pddi\xbox\state.cpp" />
+    <ClCompile Include="..\..\pddi\xbox\texture.cpp" />
+    <ClCompile Include="..\..\pddi\xbox\util.cpp" />
+    <ClCompile Include="..\..\pddi\xbox\vertprog.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\..\pddi\xbox\psh\bumpmapshader.psh" />
+    <FxCompile Include="..\..\pddi\xbox\psh\csrpshader.psh" />
+    <FxCompile Include="..\..\pddi\xbox\psh\csrshader.psh" />
+    <FxCompile Include="..\..\pddi\xbox\vsh\bumpmap.vsh" />
+    <FxCompile Include="..\..\pddi\xbox\vsh\point_sprite.vsh" />
+    <FxCompile Include="..\..\pddi\xbox\vsh\refract.vsh" />
+    <FxCompile Include="..\..\pddi\xbox\vsh\skin.vsh" />
+    <FxCompile Include="..\..\pddi\xbox\vsh\skin_csrp.vsh" />
+    <FxCompile Include="..\..\pddi\xbox\vsh\skin_onebone.vsh" />
+    <FxCompile Include="..\..\pddi\xbox\vsh\skin_onebone_csrp.vsh" />
+    <FxCompile Include="..\..\pddi\xbox\vsh\skin_refract.vsh" />
+    <FxCompile Include="..\..\pddi\xbox\vsh\skin_toon.vsh" />
+    <FxCompile Include="..\..\pddi\xbox\vsh\spheremap.vsh" />
+    <FxCompile Include="..\..\pddi\xbox\vsh\toon.vsh" />
+    <FxCompile Include="..\..\pddi\xbox\vsh\toon2.vsh" />
+    <FxCompile Include="..\..\pddi\xbox\vsh\util.vsh" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

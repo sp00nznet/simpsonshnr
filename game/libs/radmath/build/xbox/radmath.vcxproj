@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ClInclude Include="..\..\radmath\buildconfig.hpp" />
+    <ClInclude Include="..\..\radmath\geometry.hpp" />
+    <ClInclude Include="..\..\radmath\matrix.hpp" />
+    <ClInclude Include="..\..\radmath\numerical.hpp" />
+    <ClInclude Include="..\..\radmath\quaternion.hpp" />
+    <ClInclude Include="..\..\radmath\radmath.hpp" />
+    <ClInclude Include="..\..\radmath\random.hpp" />
+    <ClInclude Include="..\..\radmath\spline.hpp" />
+    <ClInclude Include="..\..\radmath\trig.hpp" />
+    <ClInclude Include="..\..\radmath\util.hpp" />
+    <ClInclude Include="..\..\radmath\vector.hpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <SccProjectName>Perforce Project</SccProjectName>
+    <SccAuxPath />
+    <SccLocalPath>..\..</SccLocalPath>
+    <SccProvider>MSSCCI:Perforce SCM</SccProvider>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>17.0.36804.4</_ProjectFileVersion>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\radmath\matrix.cpp" />
+    <ClCompile Include="..\..\radmath\numerical.cpp" />
+    <ClCompile Include="..\..\radmath\plane.cpp" />
+    <ClCompile Include="..\..\radmath\quaternion.cpp" />
+    <ClCompile Include="..\..\radmath\radmath.cpp" />
+    <ClCompile Include="..\..\radmath\random.cpp" />
+    <ClCompile Include="..\..\radmath\spline.cpp" />
+    <ClCompile Include="..\..\radmath\triangle.cpp" />
+    <ClCompile Include="..\..\radmath\trig.cpp" />
+    <ClCompile Include="..\..\radmath\vector.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
