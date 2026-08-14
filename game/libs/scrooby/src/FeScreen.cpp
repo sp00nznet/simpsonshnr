@@ -172,16 +172,61 @@ void FeScreen::AddChild( FeEntity* s )
 // Return:      NONE
 //
 //===========================================================================
+
+// One-shot dump of a screen's subtree, so the log says exactly what should be
+// on screen and whether Scrooby thinks each piece is drawable and visible.
+static void _FeDumpTree( FeParent* parent, int depth )
+{
+    if( depth > 3 ) return;
+    int n = parent->GetChildrenCount();
+    for( int i = 0; i < n; i++ )
+    {
+        FeEntity* child = parent->GetChildIndex( i );
+        if( child == NULL ) continue;
+
+        const char* tag = "[FE]    ";
+        if( depth == 1 ) tag = "[FE]      ";
+        else if( depth == 2 ) tag = "[FE]        ";
+        else if( depth >= 3 ) tag = "[FE]          ";
+
+        int flags = 0;
+        if( child->IsDrawable() )
+        {
+            FeDrawable* d = static_cast< FeDrawable* >( child );
+            // flags = visible*1000 + alpha 0..255, so one number says both.
+            flags = ( d->IsVisible() ? 1000 : 0 ) + (int)( d->GetAlpha() * 255.0f );
+        }
+        radPs3Trace( tag, child->GetName(), flags );
+
+        if( child->IsOwner() )
+        {
+            FeParent* sub = dynamic_cast< FeParent* >( child );
+            if( sub != NULL ) _FeDumpTree( sub, depth + 1 );
+        }
+    }
+}
+
 void FeScreen::Display()
 {
-    static int s_traced = 0;
-    if( s_traced < 4 )
+    // Report whenever the screen being displayed changes, so the log always
+    // says what is actually on screen right now.
+    static const char* s_lastName = 0;
+    static int s_disp = 0;
+    const char* thisName = const_cast<FeScreen*>( this )->GetName();
+    // Report on a screen change, and again periodically so the log shows the
+    // steady state rather than only the moment the screen was entered.
+    if( thisName != s_lastName || ( s_disp % 2000 ) == 1999 )
     {
-        s_traced++;
-        radPs3Trace( "[FE] Display screen=", const_cast<FeScreen*>( this )->GetName() );
-        radPs3Trace( "[FE]  proj W=", 0, (int)FeApp::GetInstance()->GetScreenWidth() );
-        radPs3Trace( "[FE]  proj H=", 0, (int)FeApp::GetInstance()->GetScreenHeight() );
+        s_lastName = thisName;
+        radPs3Trace( "[FE] now displaying=", thisName );
         radPs3Trace( "[FE]  children=", 0, GetChildrenCount() );
+        radPs3Trace( "[FE]  deltaTime x1000=", 0, (int)( FeApp::GetInstance()->GetDeltaTime() * 1000.0f ) );
+        // per node: 1000 + alpha(0..255) when visible, else alpha only
+        _FeDumpTree( this, 0 );
+    }
+    s_disp++;
+    if( false )
+    {
     }
 
     p3d::pddi->PushState( PDDI_STATE_RENDER );

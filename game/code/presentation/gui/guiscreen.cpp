@@ -612,6 +612,44 @@ void CGuiScreen::HandleMessage
                     break;
                 }
 
+                case GUI_WINDOW_STATE_RUNNING:
+                {
+                    // INTRO ends as soon as m_numTransitionsPending hits zero,
+                    // which is tracked separately from the fade timer. If the
+                    // fade had not finished by then, the layers are left part
+                    // way and every child is modulated down to nothing. On PS3
+                    // there are no transition sequencers running, so INTRO
+                    // lasted about four frames and the whole front end came up
+                    // at roughly alpha 0.16 -- a black screen.
+                    //
+                    // Snap an unfinished fade to its end state. This is a no-op
+                    // wherever the fade completed normally, since FadeIn/FadeOut
+                    // set m_elapsedFadeTime to -1 when they are done.
+                    //
+                    if( (m_screenFX & SCREEN_FX_FADE) &&
+                        m_elapsedFadeTime != -1 )
+                    {
+                        float endAlpha = m_inverseFading ? 0.0f : 1.0f;
+
+                        this->SetAlphaForLayers( endAlpha,
+                                                 m_foregroundLayers,
+                                                 m_numForegroundLayers );
+
+                        this->SetAlphaForLayers( endAlpha,
+                                                 m_backgroundLayers,
+                                                 m_numBackgroundLayers );
+
+                        if( m_screenCover != NULL )
+                        {
+                            m_screenCover->SetAlpha( 1.0f - endAlpha );
+                        }
+
+                        m_elapsedFadeTime = -1;
+                    }
+
+                    break;
+                }
+
                 default:
                 {
                     break;

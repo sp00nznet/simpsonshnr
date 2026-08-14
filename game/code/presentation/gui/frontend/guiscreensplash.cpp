@@ -329,7 +329,11 @@ CGuiScreenSplash::StartDemoInRuntime()
 void
 CGuiScreenSplash::StartDemoAsMovie()
 {
-#ifndef RAD_WIN32
+    // PS3 has no FMV playback (radmovie is stubbed and the movies are not in the
+    // disc image), so rolling into the attract movie just parks the front end on
+    // a black screen forever. PC already skips it.
+    //
+#if !defined( RAD_WIN32 ) && !defined( RAD_PS3 )
     // Play demo movie.
     //
     rAssert( m_guiManager );
@@ -339,6 +343,6 @@ CGuiScreenSplash::StartDemoAsMovie()
 
     m_pParent->HandleMessage( GUI_MSG_GOTO_SCREEN,
                               GUI_SCREEN_ID_PLAY_MOVIE_DEMO );
-#endif
+#endif // !RAD_WIN32 && !RAD_PS3
 }
 

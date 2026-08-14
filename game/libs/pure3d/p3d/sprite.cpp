@@ -612,6 +612,9 @@ void tSprite::Display()
     {
         radPs3Trace( "[TS] tSprite::Display calls=", 0, s_calls );
         radPs3Trace( "[TS]  nPolys total=", 0, s_polys );
+        radPs3TraceHex( "[TS]  v0 colour=", (unsigned int)polys[0].c );
+        radPs3TraceHex( "[TS]  tex0=", (unsigned int)(unsigned long)( textures[0] ? textures[0]->GetTexture() : 0 ) );
+        radPs3TraceHex( "[TS]  shader=", (unsigned int)(unsigned long)( Shader ? Shader->GetShader() : 0 ) );
     }
 
     for(int i = 0; i < nPolys; i++)

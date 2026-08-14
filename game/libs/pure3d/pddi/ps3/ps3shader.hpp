@@ -98,6 +98,10 @@ protected:
 
     bool mTwoSided;
 
+    // Whether this material is lit. pddi drives it through PDDI_SP_ISLIT; the
+    // GL backend keys GL_LIGHTING off the same flag.
+    bool mLit;
+
     // Cg program handles (if using Cg shaders)
     void* mVertexProgram;
     void* mFragmentProgram;

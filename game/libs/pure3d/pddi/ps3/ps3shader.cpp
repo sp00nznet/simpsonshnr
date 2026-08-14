@@ -33,6 +33,7 @@ ps3Shader::ps3Shader(ps3Device* device) :
     mAlphaTestMode(PDDI_COMPARE_GREATER),
     mAlphaTestRef(0.5f),
     mAlphaBlendEnabled(false),
+    mLit(false),
     mSrcBlend(PDDI_BLEND_ONE),
     mDstBlend(PDDI_BLEND_ZERO),
     mTwoSided(false),
@@ -71,6 +72,13 @@ bool ps3Shader::SetInt(unsigned paramName, int value)
     {
     case PDDI_SP_TWOSIDED:
         mTwoSided = (value != 0);
+        return true;
+    case PDDI_SP_ISLIT:
+        // Without this the case fell through to "return false" and GL_LIGHTING
+        // was never managed, so unlit 2D geometry inherited whatever lighting
+        // state the last 3D draw left behind -- with no lights set up that
+        // multiplies every fragment to black.
+        mLit = (value != 0);
         return true;
     case PDDI_SP_ALPHATEST:
         mAlphaTestEnabled = (value != 0);
@@ -246,6 +254,17 @@ void ps3Shader::ApplyMaterialState(ps3Context* context)
     // Do NOT touch GL_CULL_FACE - that is managed by the context's SetCullMode().
     // The shader was incorrectly re-enabling GL_CULL_FACE, overriding Scrooby's
     // PDDI_CULL_NONE and causing all 2D sprites to be back-face culled (black screen).
+    // Match pglContext/glmat.cpp: lighting is enabled per material, not left
+    // to whatever the previous draw set.
+    if (mLit)
+    {
+        glEnable(GL_LIGHTING);
+    }
+    else
+    {
+        glDisable(GL_LIGHTING);
+    }
+
     if (mTwoSided)
     {
         glDisable(GL_CULL_FACE);
