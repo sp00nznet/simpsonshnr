@@ -37,6 +37,22 @@
 #include <raddebug.hpp>
 #include <stdio.h>
 
+#ifdef RAD_PS3
+#include <sys/tty.h>
+static void _BUPrint( const char* a )
+{
+    char buf[ 256 ];
+    int i = 0;
+    while( a[ i ] && i < 200 ) { buf[ i ] = a[ i ]; ++i; }
+    buf[ i++ ] = '\n';
+    unsigned int written;
+    sys_tty_write( 0, buf, i, &written );
+}
+#define BU_TRACE(a) _BUPrint(a)
+#else
+#define BU_TRACE(a) do {} while(0)
+#endif
+
 //===========================================================================
 // Global Data, Local Data, Local Classes
 //===========================================================================
@@ -127,10 +143,12 @@ CGuiManagerBootUp::~CGuiManagerBootUp()
 void CGuiManagerBootUp::Populate()
 {
 MEMTRACK_PUSH_GROUP( "CGuiManagerBootUp" );
+    BU_TRACE( "[BU] Populate enter" );
     Scrooby::Screen* pScroobyScreen;
     CGuiScreen* pScreen;
 
 #ifdef RAD_PS2
+    BU_TRACE( "[BU] GetScreen BootupLoad" );
     pScroobyScreen = m_pScroobyProject->GetScreen( "BootupLoad" );
     if( pScroobyScreen != NULL )
     {
@@ -139,6 +157,7 @@ MEMTRACK_PUSH_GROUP( "CGuiManagerBootUp" );
     }
 #endif
 
+    BU_TRACE( "[BU] GetScreen License" );
     pScroobyScreen = m_pScroobyProject->GetScreen( "License" );
     if( pScroobyScreen != NULL )
     {
@@ -146,6 +165,7 @@ MEMTRACK_PUSH_GROUP( "CGuiManagerBootUp" );
         this->AddWindow( CGuiWindow::GUI_SCREEN_ID_LICENSE, pScreen );
     }
 /*
+    BU_TRACE( "[BU] GetScreen Language" );
     pScroobyScreen = m_pScroobyProject->GetScreen( "Language" );
     if( pScroobyScreen != NULL )
     {
@@ -153,6 +173,7 @@ MEMTRACK_PUSH_GROUP( "CGuiManagerBootUp" );
         this->AddWindow( CGuiWindow::GUI_SCREEN_ID_LANGUAGE, pScreen );
     }
 */
+    BU_TRACE( "[BU] GetScreen MemCardCheck" );
     pScroobyScreen = m_pScroobyProject->GetScreen( "MemCardCheck" );
     if( pScroobyScreen != NULL )
     {
@@ -160,6 +181,7 @@ MEMTRACK_PUSH_GROUP( "CGuiManagerBootUp" );
         this->AddWindow( CGuiWindow::GUI_SCREEN_ID_MEMORY_CARD_CHECK, pScreen );
     }
 
+    BU_TRACE( "[BU] GetScreen Blank" );
     pScroobyScreen = m_pScroobyProject->GetScreen( "Blank" );
     if( pScroobyScreen != NULL )
     {
@@ -167,6 +189,7 @@ MEMTRACK_PUSH_GROUP( "CGuiManagerBootUp" );
         this->AddWindow( CGuiWindow::GUI_SCREEN_ID_AUTO_LOAD, pScreen );
     }
 
+    BU_TRACE( "[BU] GetScreen Message" );
     pScroobyScreen = m_pScroobyProject->GetScreen( "Message" );
     if( pScroobyScreen != NULL )
     {
@@ -174,6 +197,7 @@ MEMTRACK_PUSH_GROUP( "CGuiManagerBootUp" );
         this->AddWindow( CGuiWindow::GUI_SCREEN_ID_GENERIC_MESSAGE, pScreen );
     }
 
+    BU_TRACE( "[BU] GetScreen Prompt" );
     pScroobyScreen = m_pScroobyProject->GetScreen( "Prompt" );
     if( pScroobyScreen != NULL )
     {
@@ -183,6 +207,7 @@ MEMTRACK_PUSH_GROUP( "CGuiManagerBootUp" );
         this->AddWindow( CGuiWindow::GUI_SCREEN_ID_GENERIC_PROMPT, pScreen );
     }
 
+    BU_TRACE( "[BU] GetScreen ErrorPrompt" );
     pScroobyScreen = m_pScroobyProject->GetScreen( "ErrorPrompt" );
     if( pScroobyScreen != NULL )
     {
@@ -191,6 +216,7 @@ MEMTRACK_PUSH_GROUP( "CGuiManagerBootUp" );
 
         this->AddWindow( CGuiWindow::GUI_SCREEN_ID_ERROR_PROMPT, pScreen );
     }
+BU_TRACE( "[BU] Populate done" );
 MEMTRACK_POP_GROUP("CGuiManagerBootUp");
 }
 

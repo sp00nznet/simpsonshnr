@@ -26,6 +26,7 @@
 #include <p3d/utility.hpp>
 #include <p3d/sprite.hpp>
 #include <raddebug.hpp> // Foundation
+#include <debug/ps3tty.h>
 #include <stdio.h>
 
 //===========================================================================
@@ -60,6 +61,7 @@ CGuiScreenLicense::CGuiScreenLicense
     // retrieve Scrooby drawing elements
     //
     rAssert( m_pScroobyScreen != NULL );
+    radPs3Trace( "[LS] License ctor: GetPage License" );
     Scrooby::Page* pPage = m_pScroobyScreen->GetPage( "License" );
     rAssert( pPage != NULL );
 
@@ -81,6 +83,7 @@ CGuiScreenLicense::CGuiScreenLicense
     tSprite* pSprite = p3d::find<tSprite>( "licenseGC.png" );
 #endif
 #ifdef RAD_PS3
+    radPs3Trace( "[LS]  find sprite" );
     tSprite* pSprite = p3d::find<tSprite>( "licenseP.png" );
     if( pSprite == NULL )
     {
@@ -93,6 +96,7 @@ CGuiScreenLicense::CGuiScreenLicense
     rAssert( pSprite != NULL );
 #endif
 
+    radPs3Trace( "[LS]  GetSprite License" );
     Scrooby::Sprite* licenseImage = pPage->GetSprite( "License" );
     rAssert( licenseImage != NULL );
 #ifdef RAD_PS3
@@ -106,6 +110,7 @@ CGuiScreenLicense::CGuiScreenLicense
 
     // set fade time for license screen (in milliseconds)
     //
+    radPs3Trace( "[LS]  SetFadeTime" );
     this->SetFadeTime( LICENSE_SCREEN_FADE_TIME );
 
 #ifdef RAD_GAMECUBE

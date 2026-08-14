@@ -13,6 +13,24 @@
 #include <raddebugwatch.hpp>
 #endif
 
+#ifdef RAD_PS3
+#include <sys/tty.h>
+static void _RLPrint( const char* a, const char* b )
+{
+    char buf[ 512 ];
+    int i = 0;
+    while( a[ i ] && i < 200 ) { buf[ i ] = a[ i ]; ++i; }
+    int j = 0;
+    while( b && b[ j ] && i < 500 ) { buf[ i++ ] = b[ j++ ]; }
+    buf[ i++ ] = '\n';
+    unsigned int written;
+    sys_tty_write( 0, buf, i, &written );
+}
+#define RL_TRACE(a, b) _RLPrint(a, b)
+#else
+#define RL_TRACE(a, b) do {} while(0)
+#endif
+
 radLoadManagerWrapper radLoad;
 
 ILoadManager* ILoadManager::s_instance = NULL;
@@ -176,6 +194,7 @@ void radLoadManager::InternalService()
             radLoadCallback* callback = dynamic_cast<radLoadCallback*>( obj );
             if( callback )
             {
+                RL_TRACE( "[RL] pop callback -> m_pCallbacks", NULL );
                 m_pCallbacks->Push(callback);
             }
             else
@@ -216,8 +235,10 @@ void radLoadManager::InternalService()
                     rAssert( loader );
                     radMemoryAllocator old = ::radMemorySetCurrentAllocator (item->GetOptions()->allocator);
 
+                    RL_TRACE( "[RL] LoadFile ENTER: ", filename );
                     loader->LoadFile( item->GetOptions(), static_cast<radLoadUpdatableRequest*>( item ) );
-                    
+                    RL_TRACE( "[RL] LoadFile EXIT:  ", filename );
+
                     ::radMemorySetCurrentAllocator (old);
                     if( m_pCurrent->GetState() == LOADING )
                     {

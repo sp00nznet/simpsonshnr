@@ -27,10 +27,12 @@
 *.user
 Debug/
 Release/
+Tune/
+BuildLog.htm
+# ...but game/code/debug/ is source, and matches "Debug/" case-insensitively.
+!/game/code/debug/
 .vs/
 out/
-build/*/Debug/
-build/*/Release/
 
 # Logs and scratch
 *.log

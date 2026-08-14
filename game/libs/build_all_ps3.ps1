@@ -119,6 +119,7 @@ function Build-Library {
     # Create library
     $AllObjs = Get-ChildItem -Path $ObjDir -Filter "*.o" -Recurse | ForEach-Object { $_.FullName }
     if ($AllObjs.Count -gt 0) {
+        if (Test-Path $OutputLib) { Remove-Item $OutputLib -Force }  # rebuild from scratch: ar r keeps stale duplicate members
         & $AR cr $OutputLib $AllObjs 2>&1 | Out-Null
         & $RANLIB $OutputLib 2>&1 | Out-Null
         Write-Host "  Library created: $OutputLib ($($AllObjs.Count) objects)" -ForegroundColor Green

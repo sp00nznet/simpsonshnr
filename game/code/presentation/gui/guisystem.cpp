@@ -52,6 +52,29 @@
 #include <text.h>
 #include <feloaders.h>
 
+#ifdef RAD_PS3
+#include <sys/tty.h>
+static void _GSPrint( const char* a, int n )
+{
+    char buf[ 256 ];
+    int i = 0;
+    while( a[ i ] && i < 200 ) { buf[ i ] = a[ i ]; ++i; }
+    if( n >= 0 )
+    {
+        buf[ i++ ] = ' ';
+        if( n >= 100 ) { buf[ i++ ] = (char)( '0' + ( n / 100 ) % 10 ); }
+        if( n >= 10 )  { buf[ i++ ] = (char)( '0' + ( n / 10 ) % 10 ); }
+        buf[ i++ ] = (char)( '0' + n % 10 );
+    }
+    buf[ i++ ] = '\n';
+    unsigned int written;
+    sys_tty_write( 0, buf, i, &written );
+}
+#define GS_TRACE(a, n) _GSPrint(a, n)
+#else
+#define GS_TRACE(a, n) do {} while(0)
+#endif
+
 // Static pointer to instance of singleton.
 CGuiSystem* CGuiSystem::spInstance = NULL;
 
@@ -786,10 +809,14 @@ MEMTRACK_PUSH_GROUP( "CGUISystem" );
 	rAssert( pProject != NULL );
     m_pProject = pProject;
 
+    GS_TRACE( "[GS] OnProjectLoadComplete enter, state=", (int)m_state );
+
     // update reference to text bible
     //
     rAssert( m_pTextBible != NULL );
     m_pTextBible->SetTextBible( TEXT_BIBLE_NAME );
+
+    GS_TRACE( "[GS]  SetTextBible done", -1 );
 
     switch( m_state )
     {
@@ -820,21 +847,27 @@ MEMTRACK_PUSH_GROUP( "CGUISystem" );
 
 			// Create bootup manager (for license screen, etc.)
 			//
+			GS_TRACE( "[GS]  BOOTUP_LOADING: new CGuiManagerBootUp", -1 );
 			m_pManagerBootUp = new CGuiManagerBootUp( m_pProject, this );
 			rAssert( m_pManagerBootUp );
 
 			// Populate screens
 			//
+			GS_TRACE( "[GS]  Populate", -1 );
 			m_pManagerBootUp->Populate();
 
             // Start it up!
             //
+            GS_TRACE( "[GS]  Start", -1 );
             m_pManagerBootUp->Start();
 
+            GS_TRACE( "[GS]  SetProject", -1 );
             m_pApp->SetProject( m_pProject );
 
             // thaw frontend render layer
+            GS_TRACE( "[GS]  Thaw GUI layer", -1 );
             GetRenderManager()->mpLayer(RenderEnums::GUI)->Thaw();
+            GS_TRACE( "[GS]  BOOTUP_LOADING done", -1 );
 
             m_state = BACKEND_LOADING;
 

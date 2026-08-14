@@ -145,6 +145,18 @@ CGuiScreenController::CGuiScreenController
     rAssert( pPage );
 #endif // RAD_WIN32
 
+#ifdef RAD_PS3
+    // PS3 ships the PC art set; fall back to the PS2 page if that is what is
+    // in the project. Without this pPage is left pointing at the menu page.
+    //
+    pPage = m_pScroobyScreen->GetPage( "ControllerPC" );
+    if( pPage == NULL )
+    {
+        pPage = m_pScroobyScreen->GetPage( "ControllerPS2" );
+    }
+    rAssert( pPage );
+#endif // RAD_PS3
+
     // and make it visible
     //
     pPage->GetLayerByIndex( 0 )->SetVisible( true );

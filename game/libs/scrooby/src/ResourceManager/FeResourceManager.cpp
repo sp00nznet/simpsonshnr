@@ -31,6 +31,31 @@
 #include <radload/utility/object.hpp>
 #include <p3d/inventory.hpp>
 
+#ifdef RAD_PS3
+#include <sys/tty.h>
+static void _SRPrint( const char* a, const char* b, int n )
+{
+    char buf[ 512 ];
+    int i = 0;
+    while( a[ i ] && i < 200 ) { buf[ i ] = a[ i ]; ++i; }
+    int j = 0;
+    while( b && b[ j ] && i < 480 ) { buf[ i++ ] = b[ j++ ]; }
+    if( n >= 0 )
+    {
+        buf[ i++ ] = ' ';
+        if( n >= 100 ) { buf[ i++ ] = (char)( '0' + ( n / 100 ) % 10 ); }
+        if( n >= 10 )  { buf[ i++ ] = (char)( '0' + ( n / 10 ) % 10 ); }
+        buf[ i++ ] = (char)( '0' + n % 10 );
+    }
+    buf[ i++ ] = '\n';
+    unsigned int written;
+    sys_tty_write( 0, buf, i, &written );
+}
+#define SR_TRACE(a, b, n) _SRPrint(a, b, n)
+#else
+#define SR_TRACE(a, b, n) do {} while(0)
+#endif
+
 // TC: This is a quick hack for implementing the Simpsons2 FE holidays
 //     theme.  At this point in the project, it's the easiest thing to
 //     do.
@@ -514,10 +539,12 @@ void FeResourceManager::ContinueLoading()
                             ::radMemorySetCurrentAllocator( old );
                         }
 
+                        SR_TRACE( "[SR]  issue p3d load: ", name, i );
                         p3d::context->GetLoadManager()->Load( request );
                     }
                     else
                     {
+                        SR_TRACE( "[SR]  STALLED waiting on: ", searchName, i );
                     }
 
                     // We don't want to let any other files get queued up until this one is done
@@ -833,6 +860,7 @@ void FeResourceManager::LoadProject(  Scrooby::Project* project, Scrooby::Resour
 //===========================================================================
 void FeResourceManager::ProjectLoadComplete()
 {
+    SR_TRACE( "[SR] ProjectLoadComplete", NULL, -1 );
     if( mCallbackID )
     {
         RemoveResource( mCallbackID );

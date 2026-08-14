@@ -1,4 +1,11 @@
-# Compile allrendermanager.cpp for PS3
+# Compile one game-code unity .cpp for PS3.
+#   .\compile_unity.ps1 ..\..\code\presentation\gui\allgui.cpp
+# Output object goes to Debug\<basename>.o, which link_only.ps1 picks up.
+param(
+    [Parameter(Mandatory = $true)]
+    [string]$Source
+)
+
 $ErrorActionPreference = "Continue"
 
 $PS3SDK = "D:\PS3.Full.3.40.SDK.PS3-DUPLEX"
@@ -6,7 +13,7 @@ $PS3_TOOLCHAIN = "$PS3SDK\[134]-PS3_Toolchain_411-Win_340_001\cell"
 $PS3_SDK = "$PS3SDK\[132]-PS3_SDK-340_001\cell"
 $CXX = "$PS3_TOOLCHAIN\host-win32\ppu\bin\ppu-lv2-g++.exe"
 
-Set-Location "C:\simpsonshnr\game\build\ps3"
+Set-Location $PSScriptRoot
 
 $INCLUDES = @(
     "-I$PS3_SDK\target\ppu\include",
@@ -36,12 +43,16 @@ $INCLUDES = @(
 
 $CXXFLAGS = "-c -g -O0 -fno-exceptions -fpermissive -DRAD_PS3 -DRAD_DEBUG -D_DEBUG -DRAD_CONSOLE -D__CELLOS_LV2__"
 
-Write-Host "Compiling allrendermanager.cpp..."
-$srcPath = "..\..\code\render\RenderManager\allrendermanager.cpp"
-$outPath = "Debug\allrendermanager.o"
-$compileArgs = "$CXXFLAGS $INCLUDES -o $outPath $srcPath"
+if (!(Test-Path $Source)) {
+    Write-Host "No such source: $Source" -ForegroundColor Red
+    exit 1
+}
 
-$process = Start-Process -FilePath $CXX -ArgumentList $compileArgs -NoNewWindow -Wait -PassThru -RedirectStandardError "error.txt"
+$outPath = "Debug\" + [System.IO.Path]::GetFileNameWithoutExtension($Source) + ".o"
+
+Write-Host "Compiling $Source -> $outPath"
+$process = Start-Process -FilePath $CXX -ArgumentList "$CXXFLAGS $INCLUDES -o $outPath $Source" `
+    -NoNewWindow -Wait -PassThru -RedirectStandardError "error.txt"
 if ($process.ExitCode -ne 0) {
     Write-Host "FAILED!" -ForegroundColor Red
     Get-Content "error.txt"

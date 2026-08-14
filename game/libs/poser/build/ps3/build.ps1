@@ -136,6 +136,7 @@ $AllObjs = Get-ChildItem -Path $ObjDir -Filter "*.o" | ForEach-Object { $_.FullN
 
 Write-Host "Adding $($AllObjs.Count) object files to library"
 
+if (Test-Path $LibFile) { Remove-Item $LibFile -Force }  # rebuild from scratch: ar r keeps stale duplicate members
 & $AR cr $LibFile $AllObjs 2>&1
 if ($LASTEXITCODE -eq 0) {
     & $RANLIB $LibFile 2>&1
