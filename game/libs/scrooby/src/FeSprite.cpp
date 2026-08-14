@@ -27,6 +27,7 @@
 
 #include <fecharmap.h>
 #include <p3d/unicode.hpp>
+#include <debug/ps3tty.h>
 
 #ifdef BITMAP_TEXT_SUPPORT
     const short DEFAULT_BITMAP_TEXT_SPACING = 0; // in pixels
@@ -165,6 +166,15 @@ void FeSprite::Display()
         if( !mSprite )
         {
             SetIndex( 0 );
+        }
+
+        static int s_spriteDraws = 0;
+        static int s_spriteNull = 0;
+        if( mSprite ) { s_spriteDraws++; } else { s_spriteNull++; }
+        if( ( ( s_spriteDraws + s_spriteNull ) % 600 ) == 1 )
+        {
+            radPs3Trace( "[SP] sprite draws=", 0, s_spriteDraws );
+            radPs3Trace( "[SP] sprite null =", 0, s_spriteNull );
         }
 
         if( mSprite )

@@ -147,12 +147,14 @@ void FeText::Display() //Override
         p3d::stack->Scale( scale, scale, 1.0f );
         ResetText();
 
-#ifdef RAD_WIN32
+#if defined( RAD_WIN32 ) || defined( RAD_PS3 )
         // TC: for PC sku, the source fonts are actually twice as big (for higher resolution display),
         //     so we need to scale them back down to the intended size
         //
+        // The PS3 disc carries the PC data set, so it needs the same halving.
+        //
         p3d::stack->Scale( 0.5f, 0.5f, 1.0f );
-#endif // RAD_WIN32
+#endif // RAD_WIN32 || RAD_PS3
 
         int formatting = m_horizontalJustification == Scrooby::Centre ? CENTRE_X : 0;
 

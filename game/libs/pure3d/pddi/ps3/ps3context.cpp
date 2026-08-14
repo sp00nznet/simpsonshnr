@@ -961,9 +961,15 @@ void ps3Context::SetupHardwareProjection()
             // Calculate frustum parameters
             // Note: camera.fov is already in RADIANS (not degrees)
             // Scrooby uses 1.5708 radians = PI/2 = 90 degrees
+            //
+            // PDDI's fov is HORIZONTAL -- see pglContext::SetupHardwareState in
+            // pddi/gl/glcon.cpp, which is the reference for this backend. Deriving
+            // halfY from the fov and scaling halfX by the aspect instead left
+            // everything drawn at 1/aspect of its intended size.
+            //
             float halfFov = camera.fov * 0.5f;
-            float halfY = tanf(halfFov) * camera.nearPlane;
-            float halfX = halfY * camera.aspect;
+            float halfX = tanf(halfFov) * camera.nearPlane;
+            float halfY = halfX / camera.aspect;
 
             // Guard against divide-by-zero from uninitialized camera
             if (halfX < 0.0001f) halfX = 0.0001f;

@@ -22,6 +22,7 @@
 #include "resourcemanager/FeResourceManager.h"
 #include "Page.h"
 #include "tLinearTable.h"
+#include <debug/ps3tty.h>
 #include "xml/XMLTree.h"
 #include <raddebug.hpp>
 #include <stdio.h>
@@ -173,6 +174,16 @@ void FeScreen::AddChild( FeEntity* s )
 //===========================================================================
 void FeScreen::Display()
 {
+    static int s_traced = 0;
+    if( s_traced < 4 )
+    {
+        s_traced++;
+        radPs3Trace( "[FE] Display screen=", const_cast<FeScreen*>( this )->GetName() );
+        radPs3Trace( "[FE]  proj W=", 0, (int)FeApp::GetInstance()->GetScreenWidth() );
+        radPs3Trace( "[FE]  proj H=", 0, (int)FeApp::GetInstance()->GetScreenHeight() );
+        radPs3Trace( "[FE]  children=", 0, GetChildrenCount() );
+    }
+
     p3d::pddi->PushState( PDDI_STATE_RENDER );
     p3d::pddi->PushState( PDDI_STATE_VIEW );
     p3d::pddi->EnableZBuffer( false );

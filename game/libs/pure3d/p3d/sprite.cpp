@@ -17,6 +17,7 @@
 #include <constants/chunkids.hpp>
 #include <p3d/shader.hpp>
 #include <p3d/targa.hpp>
+#include <debug/ps3tty.h>
 
 static const int IMAGE_VERSION = 14000;
 
@@ -603,6 +604,16 @@ void tSprite::SetColour(tColour c)
 
 void tSprite::Display()
 {
+    static int s_calls = 0;
+    static int s_polys = 0;
+    s_calls++;
+    s_polys += nPolys;
+    if( ( s_calls % 600 ) == 1 )
+    {
+        radPs3Trace( "[TS] tSprite::Display calls=", 0, s_calls );
+        radPs3Trace( "[TS]  nPolys total=", 0, s_polys );
+    }
+
     for(int i = 0; i < nPolys; i++)
     {
 //      if(tDrawable2D::RectClip(scratch,uv,colours))

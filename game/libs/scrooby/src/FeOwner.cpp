@@ -27,6 +27,7 @@
 #include <p3d/utility.hpp>
 #include "utility/debugmessages.h"
 #include "string.h"
+#include <debug/ps3tty.h>
 
 
 FeOwner::FeOwner( const tName& name ) : 
@@ -109,6 +110,10 @@ void FeOwner::Update( float elapsedTime )
 
 void FeOwner::Display()
 {
+    static int s_frames = 0;
+    static int s_visited = 0;
+    static int s_drawable = 0;
+    static int s_visible = 0;
     int numChildren = this->GetChildrenCount();
 
     for( int i = 0; i < numChildren; i++ )
@@ -116,13 +121,23 @@ void FeOwner::Display()
         FeEntity* feEntity = this->GetChildIndex( i );
         rAssert( feEntity );
 
+        s_visited++;
+        if( ( ++s_frames % 4000 ) == 1 )
+        {
+            radPs3Trace( "[FO] visited=", 0, s_visited );
+            radPs3Trace( "[FO]  isDrawable=", 0, s_drawable );
+            radPs3Trace( "[FO]  isVisible=", 0, s_visible );
+        }
+
         if( feEntity->IsDrawable() )
         {
+            s_drawable++;
             FeDrawable* drawable = static_cast< FeDrawable* >( feEntity );
             rAssert( drawable );
 
             if( drawable->IsVisible() )
             {
+                s_visible++;
                 float x = 0.0f;
                 float y = 0.0f;
 
