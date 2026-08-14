@@ -169,6 +169,13 @@ private:
     char*   m_TmpBuffer;
 
     //
+    // True when the library on disc has the opposite endianness to us. The
+    // shipped .rcf files are little endian and the PS3's PPU is big endian,
+    // so its header and hash table have to be swapped as they are read.
+    //
+    bool    m_EndianSwap;
+
+    //
     // Finish the registration with the given status.
     //
     void CompleteRegister( IRadCementLibrary::CementLibraryStatus status );

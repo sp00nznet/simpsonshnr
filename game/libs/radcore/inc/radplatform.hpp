@@ -77,7 +77,7 @@ IRadPlatform* radPlatformGet( void );
 
 //
 // These functions are provided to convert between little and big endian. Big endian
-// is currently only used by the GameCube
+// is used by the GameCube and by the PS3's PPU.
 //
 #ifdef RAD_GAMECUBE
 
@@ -87,7 +87,30 @@ inline unsigned short radPlatformEndian16( unsigned short value ) { return( __lh
 inline unsigned int radPlatformEndian32( unsigned int value ) { return( __lwbrx( &value, 0 ) ); }
 inline float radPlatformEndianFloat( float value ) { float x; int* p = (int*) &x; *p = __lwbrx( &value, 0 ); return( x ); }
 
-#else 
+#elif defined( RAD_PS3 )
+
+#define RAD_BIG_ENDIAN
+
+inline unsigned short radPlatformEndian16( unsigned short value )
+{
+    return( (unsigned short) ( ( value >> 8 ) | ( value << 8 ) ) );
+}
+inline unsigned int radPlatformEndian32( unsigned int value )
+{
+    return( ( value >> 24 )
+          | ( ( value >> 8 ) & 0x0000FF00u )
+          | ( ( value << 8 ) & 0x00FF0000u )
+          | ( value << 24 ) );
+}
+inline float radPlatformEndianFloat( float value )
+{
+    union { float f; unsigned int i; } u;
+    u.f = value;
+    u.i = radPlatformEndian32( u.i );
+    return( u.f );
+}
+
+#else
 
 #define RAD_LITTLE_ENDIAN
 

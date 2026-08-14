@@ -22,7 +22,8 @@
 #include <memory/srrmemory.h>
 #include <mission/charactersheet/charactersheetmanager.h>
 
-#include <raddebug.hpp>     // Foundation
+#include <raddebug.hpp>
+#include <debug/ps3tty.h>     // Foundation
 #include <group.h>
 #include <layer.h>
 #include <page.h>
@@ -164,8 +165,16 @@ CGuiScreenController::CGuiScreenController
     // get text labels
     //
     Scrooby::Group* textLabels = pPage->GetGroup( "TextLabels" );
+#ifdef RAD_PS3
+    if( textLabels == NULL )
+    {
+        // ControllerPC.pag calls this group "Menu", not "TextLabels".
+        //
+        textLabels = pPage->GetGroup( "Menu" );
+    }
+#endif // RAD_PS3
     rAssert( textLabels != NULL );
-    for( int i = 0; i < MAX_NUM_LABELS; i++ )
+    for( int i = 0; textLabels != NULL && i < MAX_NUM_LABELS; i++ )
     {
         char objectName[ 32 ];
         sprintf( objectName, "Label%02d", i );

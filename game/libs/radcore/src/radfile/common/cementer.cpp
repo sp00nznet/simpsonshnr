@@ -10,6 +10,7 @@
 #include "pch.hpp"
 #include <string.h> 
 #include <raddebug.hpp>
+#include <radplatform.hpp>
 #include "file.hpp"
 #include "drive.hpp"
 #include "cementLibrary.hpp"
@@ -152,7 +153,8 @@ radCementLibrary::radCementLibrary( radDrive* pDrive, radFile* pDataFile, radCem
     m_Priority( priority ),
     m_pCallback( NULL ),
     m_pUserData( NULL ),
-    m_TmpBuffer( NULL )
+    m_TmpBuffer( NULL ),
+    m_EndianSwap( false )
 {
     //
     // Reference the drive object
@@ -418,21 +420,30 @@ void radCementLibrary::OnFileOperationsComplete( void* pUserData )
         }
 
         //
-        // Check the endian
+        // Check the endian. A mismatch is not fatal: the header and hash table
+        // are plain unsigned ints, so they can be byte swapped as they are read.
+        // The shipped .rcf files are little endian; the PS3's PPU is big endian.
         //
+        m_EndianSwap = false;
+
         if ( pFileInfo->m_BigEndian )
         {
 #       ifdef RAD_LITTLE_ENDIAN
-            rTunePrintf( "Library [%s] is big endian, should be little endian.\n", m_pDataFile->GetFilename( ) );
-            isLibraryOK = false;
+            m_EndianSwap = true;
 #       endif
         }
         else
         {
 #       ifdef RAD_BIG_ENDIAN
-            rTunePrintf( "Library [%s] is little endian, should be big endian.\n", m_pDataFile->GetFilename( ) );
-            isLibraryOK = false;
+            m_EndianSwap = true;
 #       endif
+        }
+
+        if ( m_EndianSwap )
+        {
+            pFileInfo->m_Alignment      = ::radPlatformEndian32( pFileInfo->m_Alignment );
+            pFileInfo->m_PadNetSize     = ::radPlatformEndian32( pFileInfo->m_PadNetSize );
+            pFileInfo->m_HeaderStartPos = ::radPlatformEndian32( pFileInfo->m_HeaderStartPos );
         }
 
         //
@@ -470,6 +481,14 @@ void radCementLibrary::OnFileOperationsComplete( void* pUserData )
         // Allocate room for the hash table and the header. The hash table just follows the
         // header in memory.
         //
+        if ( m_EndianSwap )
+        {
+            radCFHeader* pTmpHeader = ( radCFHeader* ) m_TmpBuffer;
+            pTmpHeader->m_NumFiles                 = ::radPlatformEndian32( pTmpHeader->m_NumFiles );
+            pTmpHeader->m_DetailedFileInfoStartPos = ::radPlatformEndian32( pTmpHeader->m_DetailedFileInfoStartPos );
+            pTmpHeader->m_FirstFileStartPos        = ::radPlatformEndian32( pTmpHeader->m_FirstFileStartPos );
+        }
+
         unsigned int numFiles = ( ( radCFHeader* ) m_TmpBuffer )->m_NumFiles;
         unsigned int totalSize = 
             ::radMemoryRoundUp( sizeof( radCFHeader ) + sizeof( radCFHeader::HFE ) * numFiles, m_pDataFile->GetOptimalSize( ) );
@@ -512,6 +531,22 @@ void radCementLibrary::OnFileOperationsComplete( void* pUserData )
 
     else if( whatToDo == Done )
     {
+        //
+        // The whole hash table has arrived by now, so swap it in place. The
+        // entries are sorted by hash value, and that ordering only holds once
+        // they are the right way round.
+        //
+        if ( m_EndianSwap )
+        {
+            for( unsigned int i = 0; i < m_Header->m_NumFiles; i++ )
+            {
+                radCFHeader::HFE* pEntry = &m_Header->m_pHashedFileEntries[ i ];
+                pEntry->m_HashValue  = ::radPlatformEndian32( pEntry->m_HashValue );
+                pEntry->m_FileOffset = ::radPlatformEndian32( pEntry->m_FileOffset );
+                pEntry->m_FileSize   = ::radPlatformEndian32( pEntry->m_FileSize );
+            }
+        }
+
         //
         // Register this libary with the drive object.
         //

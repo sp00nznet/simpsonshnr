@@ -35,6 +35,7 @@
 #include <main/game.h>
 #include <memory/createheap.h>
 #include <memory/srrmemory.h>
+#include <debug/ps3tty.h>
 #include <memory/memoryutilities.h>
 
 #include <cheats/cheatinputsystem.h>
@@ -534,6 +535,12 @@ void SetupAllocatorSearch( GameMemoryAllocator allocator )
 void PrintOutOfMemoryMessage( void* userData, radMemoryAllocator heap, const unsigned int size )
 {
 #ifndef FINAL
+    // rReleasePrintf is compiled out on PS3, so say which heap died before
+    // the pretty on-screen version tries to allocate a text display.
+    //
+    radPs3Trace( "[OOM] heap=", HeapNames[ static_cast<GameMemoryAllocator>( heap ) ], (int) heap );
+    radPs3Trace( "[OOM] requested bytes=", 0, (int) size );
+
     //
     // Print out memory information to the TTY first
     //

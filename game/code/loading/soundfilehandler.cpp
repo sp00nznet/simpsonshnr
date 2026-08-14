@@ -21,6 +21,7 @@
 
 #include <sound/soundmanager.h>
 #include <memory/srrmemory.h>
+#include <string.h>
 
 
 
@@ -83,6 +84,26 @@ void SoundFileHandler::LoadFile( const char* filename,
 {
     mpCallback = pCallback;
     mpUserData = pUserData;
+
+#ifdef RAD_PS3
+    //
+    // PS3 sound is stubbed (radsound_ps3_stub.cpp) and the .rms sample banks
+    // are not in the disc image, so nothing can consume them. Report those
+    // complete straight away rather than letting the sound system size an
+    // allocation from a header it never read -- that asks the music heap for
+    // ~2GB. Tuning scripts still load: daSoundTuner reads its namespace out
+    // of them and asserts if they are missing.
+    //
+    if( filename != NULL )
+    {
+        int len = strlen( filename );
+        if( len > 4 && strcasecmp( filename + len - 4, ".rms" ) == 0 )
+        {
+            mpCallback->OnLoadFileComplete( mpUserData );
+            return;
+        }
+    }
+#endif
 
     //
     // Pass the load request on to the sound system, giving it this object

@@ -35,6 +35,8 @@
 #define strcmpi strcasecmp
 #endif
 
+#include <debug/ps3tty.h>
+
 #ifdef RAD_GAMECUBE
 #include <ctype.h>
 int strcmpi(const char *a, const char *b)
@@ -493,6 +495,8 @@ void tLoadRequest::InternalCallback::Done()
 {
     tEntityStore* inventory = static_cast<tEntityStore*>(request->request->GetInventory());
 
+    radPs3Trace( "[P3] InternalCallback::Done ", request->GetFilename() );
+    radPs3TraceHex( "[P3]  inventory=", (unsigned int)(unsigned long)inventory );
     if(inventory)
     {
         if(request->store)
@@ -502,12 +506,14 @@ void tLoadRequest::InternalCallback::Done()
         else
         {
             tEntityTable* sectionstore = p3d::context->GetInventory()->GetSection(request->section);
+            radPs3TraceHex( "[P3]  sectionstore=", (unsigned int)(unsigned long)sectionstore );
             if(sectionstore)
             {
                 inventory->Dump(sectionstore);
             }
             else
             {
+                radPs3Trace( "[P3]  NO SECTION -> dumping to global inventory" );
                 inventory->Dump(p3d::context->GetInventory());
             }
         }

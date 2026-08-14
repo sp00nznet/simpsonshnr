@@ -32,6 +32,9 @@
 #ifdef RAD_PS2
     #include <eekernel.h>
 #endif
+#ifdef RAD_PS3
+    #include <sys/synchronization.h>
+#endif
 #ifdef RAD_GAMECUBE
     #include <os.h>
 #endif 
@@ -134,6 +137,19 @@ radThreadMutex::radThreadMutex( void )
 
 #endif
 
+#ifdef RAD_PS3
+    //
+    // Recursive light-weight mutex. radLoad in particular relocks from the
+    // same thread, and the Win32/PS2 implementations are both re-entrant.
+    //
+    sys_lwmutex_attribute_t attr;
+    sys_lwmutex_attribute_initialize( attr );
+    attr.attr_recursive = SYS_SYNC_RECURSIVE;
+    int ret = sys_lwmutex_create( &m_Mutex, &attr );
+    rAssert( ret == CELL_OK );
+
+#endif
+
 }
 
 //=============================================================================
@@ -173,6 +189,11 @@ radThreadMutex::~radThreadMutex( void )
     //
     // Under gamecube, we don't do anything.
     //
+#ifdef RAD_PS3
+
+    sys_lwmutex_destroy( &m_Mutex );
+
+#endif
 }
 
 //=============================================================================
@@ -235,6 +256,12 @@ void radThreadMutex::Lock( void )
 
 #endif
 
+#ifdef RAD_PS3
+
+    sys_lwmutex_lock( &m_Mutex, 0 );  // 0 = wait forever
+
+#endif
+
 }
 
 //=============================================================================
@@ -284,6 +311,12 @@ void radThreadMutex::Unlock( void )
     // Simply unlock OS mutex object.
     //
     OSUnlockMutex( &m_Mutex );
+
+#endif
+
+#ifdef RAD_PS3
+
+    sys_lwmutex_unlock( &m_Mutex );
 
 #endif
 

@@ -5491,6 +5491,42 @@ History:
 #define public_iCALLOc   dlindependent_calloc
 #define public_iCOMALLOc dlindependent_comalloc
 
+#ifdef RAD_PS3
+#include <sys/ppu_thread.h>
+
+// SetMallocState() parks the heap being used in file-scope globals (pAv_,
+// g_pSBrkPointer, ...) and then calls dlmalloc. With more than one thread
+// allocating -- on PS3 the main thread and radLoad's load thread both do --
+// one thread's SetMallocState() lands under the other's dlmalloc, which then
+// carves chunks out of the wrong arena. do_check_chunk() catches it later as
+// a chunk below min_address, a long way from the actual damage.
+//
+// ponytail: one global spinlock over the dl* calls. Allocation is not hot
+// enough here to care; per-heap locks if it ever shows up in a profile.
+// Held only across SetMallocState + the dl call, so the memory monitor and
+// the debug spew below stay outside it and cannot recurse into a deadlock.
+static volatile unsigned int g_dlHeapLock = 0;
+
+struct radDlHeapLock
+{
+    radDlHeapLock()
+    {
+        while( __sync_lock_test_and_set( &g_dlHeapLock, 1 ) != 0 )
+        {
+            sys_ppu_thread_yield();
+        }
+    }
+    ~radDlHeapLock()
+    {
+        __sync_lock_release( &g_dlHeapLock );
+    }
+};
+
+#define RAD_DLHEAP_LOCK() radDlHeapLock _dlHeapLock
+#else
+#define RAD_DLHEAP_LOCK() ((void)0)
+#endif
+
 struct radMemoryDlAllocator
 :
 public IRadMemoryHeap,
@@ -5515,8 +5551,12 @@ public radRefCount
     
     virtual void* GetMemory( unsigned int size )
 	{
-		SetMallocState( );
-		void * pMemory = dlmalloc( size );
+		void * pMemory;
+		{
+			RAD_DLHEAP_LOCK();
+			SetMallocState( );
+			pMemory = dlmalloc( size );
+		}
 		
 		if ( pMemory != NULL )
 		{
@@ -5538,9 +5578,12 @@ public radRefCount
 	
     virtual void* GetMemoryAligned( unsigned int size, unsigned int alignment )
 	{
-		SetMallocState( );
-		
-		void * pMemory = dlmemalign( alignment, size );
+		void * pMemory;
+		{
+			RAD_DLHEAP_LOCK();
+			SetMallocState( );
+			pMemory = dlmemalign( alignment, size );
+		}
 		
 		if ( pMemory != NULL )
 		{
@@ -5585,8 +5628,11 @@ public radRefCount
 
 		if ( pMemory != NULL )
 		{
-			SetMallocState( );
-			dlfree( pMemory );
+			{
+				RAD_DLHEAP_LOCK();
+				SetMallocState( );
+				dlfree( pMemory );
+			}
 
             radMemoryMonitorRescindAllocation( pMemory );
 			
@@ -5607,9 +5653,12 @@ public radRefCount
     virtual void GetStatus( unsigned int* totalFreeMemory, unsigned int* largestBlock,
 		unsigned int* numberOfObjects, unsigned int * highWaterMark )
 	{
-		SetMallocState( );
-		
-		mallinfo myInfo = dlmallinfo( );
+		mallinfo myInfo;
+		{
+			RAD_DLHEAP_LOCK();
+			SetMallocState( );
+			myInfo = dlmallinfo( );
+		}
         unsigned int totalFree = m_SizeOfMemory - myInfo.uordblks; 
         unsigned int totalUsed = myInfo.uordblks;
         if( totalUsed > m_HighWaterMark )

@@ -59,3 +59,4 @@ if ($process.ExitCode -ne 0) {
     exit 1
 }
 Write-Host "SUCCESS: $outPath" -ForegroundColor Green
+exit 0

@@ -11,6 +11,7 @@
 #include <radtypeinfo.hpp>
 #include <radobject.hpp>
 #include <radfile.hpp>
+#include <radplatform.hpp>
 
 #ifdef RADSCRIPT_DEBUG
 static const char dc[] = "radTypeInfoLoader";
@@ -18,9 +19,11 @@ static const char dc[] = "radTypeInfoLoader";
 
 static inline unsigned int radEndianLittleToPlat( unsigned int in )
 {
-	#ifdef RAD_GAMECUBE
+	// .typ files are authored little endian. Swap on any big endian target --
+	// that is the GameCube and the PS3's PPU, not just the GameCube.
+	#ifdef RAD_BIG_ENDIAN
 		unsigned int out;
-	
+
 		((char*)&out)[ 0 ] = ((char*)&in)[ 3 ];
 		((char*)&out)[ 1 ] = ((char*)&in)[ 2 ];
 		((char*)&out)[ 2 ] = ((char*)&in)[ 1 ];

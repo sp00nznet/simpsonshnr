@@ -39,6 +39,9 @@ public:
     void Coord(float x, float y, float z);
     void Position(float x, float y, float z);
     void Normal(float x, float y, float z);
+    // Nothing in the PS3 shader set consumes tangent space -- same as dx8.
+    inline void Binormal(float x, float y, float z) { }
+    inline void Tangent(float x, float y, float z) { }
     void Colour(pddiColour colour, int channel = 0);
     void UV(float u, float v, int channel = 0);
     void TexCoord1(float s, int channel = 0);

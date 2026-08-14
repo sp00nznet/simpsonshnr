@@ -128,12 +128,16 @@ void radLoadManager::AddCallback( radLoadCallback* callback )
         callback->AddRef();
         if( !IsLoadPending() )
         {
+            RL_TRACE( "[RL] AddCallback IMMEDIATE (queue empty, no current)", NULL );
             callback->Done();
             callback->Release();
         }
         else
         {
-            m_pLoadQueue->Push( callback );
+            if( !m_pLoadQueue->Push( callback ) )
+            {
+                RL_TRACE( "[RL] AddCallback PUSH FAILED (queue full)", NULL );
+            }
         }
     }
 }
@@ -312,7 +316,10 @@ void radLoadManager::Load( radLoadOptions* options, radLoadRequest** request )
     QueueItem* item = new QueueItem( optionsCopy );
     ::radMemorySetCurrentAllocator( old );
     item->AddRef();
-    m_pLoadQueue->Push( item );
+    if( !m_pLoadQueue->Push( item ) )
+    {
+        RL_TRACE( "[RL] Load PUSH FAILED (queue full): ", optionsCopy.filename );
+    }
     item->SetState( QUEUED );
     *request = static_cast<radLoadRequest*>(item);
     if( options->stream )

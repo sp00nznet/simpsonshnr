@@ -540,11 +540,14 @@ void FeResourceManager::ContinueLoading()
                         }
 
                         SR_TRACE( "[SR]  issue p3d load: ", name, i );
+                        SR_TRACE( "[SR]   into section: ", m_pInventorySection, -1 );
                         p3d::context->GetLoadManager()->Load( request );
                     }
                     else
                     {
                         SR_TRACE( "[SR]  STALLED waiting on: ", searchName, i );
+                        SR_TRACE( "[SR]   section: ", m_pInventorySection, -1 );
+                        SR_TRACE( "[SR]   secondary: ", m_pSecondaryInventorySection, -1 );
                     }
 
                     // We don't want to let any other files get queued up until this one is done

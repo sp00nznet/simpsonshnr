@@ -31,7 +31,10 @@ $files = @(
     @{src = "$Pure3DDir\pddi\ps3\ps3prim.cpp"; obj = "$ScriptDir\Debug\ps3prim.o"},
     @{src = "$Pure3DDir\pddi\ps3\ps3shader.cpp"; obj = "$ScriptDir\Debug\ps3shader.o"},
     @{src = "$Pure3DDir\pddi\ps3\ps3primstream.cpp"; obj = "$ScriptDir\Debug\ps3primstream.o"},
-    @{src = "$Pure3DDir\pddi\base\basecontext.cpp"; obj = "$ScriptDir\Debug\basecontext.o"}
+    @{src = "$Pure3DDir\pddi\base\basecontext.cpp"; obj = "$ScriptDir\Debug\basecontext.o"},
+    @{src = "$Pure3DDir\pddi\base\baseshader.cpp"; obj = "$ScriptDir\Debug\baseshader.o"},
+    @{src = "$Pure3DDir\pddi\base\font.cpp"; obj = "$ScriptDir\Debug\font.o"},
+    @{src = "$Pure3DDir\pddi\base\pddiobj.cpp"; obj = "$ScriptDir\Debug\pddiobj.o"}
 )
 
 $allSuccess = $true
@@ -53,7 +56,9 @@ if ($allSuccess) {
     Write-Host "`nUpdating library archive..."
     # Include all object files in Debug folder
     $allObjs = Get-ChildItem -Path "$ScriptDir\Debug" -Filter "*.o" | ForEach-Object { $_.FullName }
-    & $AR rcs "$Pure3DDir\build\lib\pddip3d.a" @allObjs
+    $libFile = "$Pure3DDir\build\lib\pddip3d.a"
+    if (Test-Path $libFile) { Remove-Item $libFile -Force }  # rebuild from scratch: ar r keeps stale duplicate members
+    & $AR rcs $libFile @allObjs
 
     if ($LASTEXITCODE -eq 0) {
         Write-Host "Library updated successfully!" -ForegroundColor Green

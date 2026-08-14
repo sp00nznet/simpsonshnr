@@ -37,6 +37,10 @@
     #include <os.h>
 #endif 
 
+#ifdef RAD_PS3
+    #include <sys/synchronization.h>
+#endif
+
 #include <radobject.hpp>
 #include <radmemory.hpp>
 #include <radthread.hpp>
@@ -119,6 +123,16 @@ class radThreadMutex : public IRadThreadMutex,
     #ifdef RAD_GAMECUBE
 
     OSMutex         m_Mutex;
+
+    #endif
+
+    //
+    // Under PS3 a recursive light-weight mutex, matching the re-entrant
+    // behaviour of the Win32 critical section and the PS2 owner/count pair.
+    //
+    #ifdef RAD_PS3
+
+    sys_lwmutex_t   m_Mutex;
 
     #endif
 };
