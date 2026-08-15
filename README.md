@@ -2,6 +2,15 @@
 
 This repository contains the complete source code for **The Simpsons: Hit & Run**, a multi-platform action-adventure video game originally developed by Radical Entertainment and released in 2003.
 
+## PS3 port
+
+![The PS3 build reaching the front end under RPCS3](media/ps3-frontend-first-render.png)
+
+First pixels out of the PS3 port: the splash screen's "PRESS START" under RPCS3,
+still rotated 180 degrees. The build boots through bootup into the front end and
+runs at 60fps. Use RPCS3's **OpenGL** renderer — the Vulkan backend currently
+shows nothing.
+
 ## Repository Overview
 
 Source only. Following the layout of [q4a/simpsons](https://github.com/q4a/simpsons),

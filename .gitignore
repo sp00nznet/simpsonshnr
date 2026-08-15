@@ -96,6 +96,8 @@ licence.*
 *.jpeg
 *.gif
 *.dds
+# ...but screenshots of the port running are ours to keep
+!/media/*.png
 *.ttf
 *.fnt
 *.mb
