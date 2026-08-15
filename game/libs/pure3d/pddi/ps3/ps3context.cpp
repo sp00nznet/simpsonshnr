@@ -25,6 +25,7 @@
 #include <PSGL/psgl.h>
 #include <PSGL/psglu.h>
 #include <cell/dbgfont.h>
+#include <debug/ps3tty.h>
 
 //-------------------------------------------------------------------
 // ps3Context implementation
@@ -977,8 +978,16 @@ void ps3Context::SetupHardwareProjection()
 
             float left = -halfX;
             float right = halfX;
-            float bottom = -halfY;
-            float top = halfY;
+
+            // Y is inverted relative to the desktop GL backend. PSGL scans the
+            // render target out with the origin at the top left, so the
+            // symmetric -halfY..+halfY frustum the GL reference uses lands
+            // everything upside down: content authored near the top of the
+            // screen drew near the bottom, mirrored. Swapping top and bottom
+            // flips clip space to match the scan-out.
+            //
+            float bottom = halfY;
+            float top = -halfY;
             float nearVal = camera.nearPlane;
             float farVal = camera.farPlane;
 
@@ -999,6 +1008,36 @@ void ps3Context::SetupHardwareProjection()
             // Set viewport
             float viewWidth = vw.right - vw.left;
             float viewHeight = vw.bottom - vw.top;
+
+            {
+                // Report every distinct camera setup, not a periodic sample --
+                // several views share this path and a timer catches the wrong one.
+                static float s_lastN = -1.0f, s_lastF = -1.0f, s_lastFov = -1.0f, s_lastAsp = -1.0f;
+                bool changed = ( camera.nearPlane != s_lastN ) || ( camera.farPlane != s_lastF )
+                            || ( camera.fov != s_lastFov ) || ( camera.aspect != s_lastAsp );
+                if (changed)
+                {
+                    s_lastN = camera.nearPlane; s_lastF = camera.farPlane;
+                    s_lastFov = camera.fov; s_lastAsp = camera.aspect;
+                    radPs3TraceHex("[PV] near=",   *(unsigned int*)&camera.nearPlane);
+                    radPs3TraceHex("[PV] far=",    *(unsigned int*)&camera.farPlane);
+                    radPs3TraceHex("[PV] fov=",    *(unsigned int*)&camera.fov);
+                    radPs3TraceHex("[PV] aspect=", *(unsigned int*)&camera.aspect);
+                    radPs3TraceHex("[PV] halfX=",  *(unsigned int*)&halfX);
+                    radPs3TraceHex("[PV] halfY=",  *(unsigned int*)&halfY);
+                    radPs3TraceHex("[PV] vw.left=",   *(unsigned int*)&vw.left);
+                    radPs3TraceHex("[PV] vw.top=",    *(unsigned int*)&vw.top);
+                    radPs3TraceHex("[PV] vw.right=",  *(unsigned int*)&vw.right);
+                    radPs3TraceHex("[PV] vw.bottom=", *(unsigned int*)&vw.bottom);
+                    radPs3Trace("[PV] vp x=", 0, (int)(vw.left * width));
+                    radPs3Trace("[PV] vp y=", 0, (int)((1.0f - vw.bottom) * height));
+                    radPs3Trace("[PV] vp w=", 0, (int)(viewWidth * width));
+                    radPs3Trace("[PV] vp h=", 0, (int)(viewHeight * height));
+                    radPs3Trace("[PV] surf w=", 0, (int)width);
+                    radPs3Trace("[PV] surf h=", 0, (int)height);
+                }
+            }
+
             glViewport((int)(vw.left * width), (int)((1.0f - vw.bottom) * height),
                        (int)(viewWidth * width), (int)(viewHeight * height));
         }

@@ -6,10 +6,11 @@ This repository contains the complete source code for **The Simpsons: Hit & Run*
 
 ![The PS3 build reaching the front end under RPCS3](media/ps3-frontend-first-render.png)
 
-First pixels out of the PS3 port: the splash screen's "PRESS START" under RPCS3,
-still rotated 180 degrees. The build boots through bootup into the front end and
-runs at 60fps. Use RPCS3's **OpenGL** renderer — the Vulkan backend currently
-shows nothing.
+The PS3 build under RPCS3, rendering the memory card check screen the right way
+up. It boots through bootup into the front end and runs at 60fps. Glyph spacing
+is still wrong — the text overlaps itself — but orientation and placement are
+correct. Use RPCS3's **OpenGL** renderer; the Vulkan backend currently shows
+nothing.
 
 ## Repository Overview
 
