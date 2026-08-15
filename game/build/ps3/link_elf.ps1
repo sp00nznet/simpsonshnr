@@ -43,8 +43,6 @@ $SYSLIBS = @(
     "$PS3_SDK_DIR\target\ppu\lib\libfs_stub.a",
     "$PS3_SDK_DIR\target\ppu\lib\libgcm_cmd.a",
     "$PS3_SDK_DIR\target\ppu\lib\libgcm_sys_stub.a",
-    "$PS3_SDK_DIR\target\ppu\lib\libaudio_stub.a",
-    "$PS3_SDK_DIR\target\ppu\lib\libmixer.a",
     "$PS3_SDK_DIR\target\ppu\lib\libspurs_stub.a",
     "$PS3_SDK_DIR\target\ppu\lib\librtc_stub.a",
     "$PS3_SDK_DIR\target\ppu\lib\libcgc.a",

@@ -399,6 +399,16 @@ unsigned int daSoundAllocatedResource::ChooseNextInstance( void )
 
     // Get the number of resource files
     unsigned int numResourceFiles = GetResource( )->GetNumFiles( );
+
+    if( numResourceFiles == 0 )
+    {
+        // PS3 has no .rms sample banks, so resources legitimately carry no
+        // files. Falling through would run rand() % 0 -- a divide by zero,
+        // which takes the whole emulator down rather than failing politely.
+        //
+        return( 0 );
+    }
+
     rAssert( numResourceFiles > 0 );
 
     // Return the chosen file
@@ -420,7 +430,14 @@ daSoundFileInstance* daSoundAllocatedResource::GetFileInstance
 )
 {
     rAssert( GetResource( ) != NULL );
-    rAssert( index < GetResource( )->GetNumFiles( ) );
+
+    if( index >= GetResource( )->GetNumFiles( ) )
+    {
+        // Same story: no sample banks means no file instances, and indexing
+        // m_pFileInstance out of range hands back a garbage pointer.
+        //
+        return( NULL );
+    }
 
     return m_pFileInstance[ index ];
 }

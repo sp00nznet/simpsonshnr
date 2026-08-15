@@ -629,8 +629,20 @@ void daSoundClipStreamPlayer::Capture(
     rAssert( m_Type == m_pResource->GetType( ) );
     
     daSoundFileInstance* pFileInstance = m_pAllocatedResource->GetFileInstance( m_AllocResInstanceID );
+
+    if( pFileInstance == NULL )
+    {
+        // PS3: the .rms sample banks are not in the disc image, so resources
+        // carry no file instances and there is genuinely nothing to cue. Park
+        // the player in its own "nothing playing" state instead of walking
+        // into a NULL dereference; callers already cope with a decued player.
+        //
+        m_State = State_DeCued;
+        return;
+    }
+
     rAssert( pFileInstance != NULL );
-    
+
     if( pFileInstance->GetType( ) == IDaSoundResource::UNKNOWN )
     {
         rAssert( false); // when does this happen ? -Th
@@ -940,6 +952,15 @@ unsigned int daSoundClipStreamPlayer::GetPlaybackTimeInSamples( void )
 void daSoundClipStreamPlayer::Play( void )
 {    
     daSoundFileInstance* pFileInstance = m_pAllocatedResource->GetFileInstance( m_AllocResInstanceID );
+
+    if( pFileInstance == NULL )
+    {
+        // PS3: no .rms sample banks on the disc, so there is nothing to play.
+        // See the matching guard in the cueing path above.
+        //
+        return;
+    }
+
     rAssert( pFileInstance != NULL );
     
     #ifndef RAD_RELEASE    

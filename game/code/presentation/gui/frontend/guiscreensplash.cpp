@@ -333,6 +333,18 @@ CGuiScreenSplash::StartDemoAsMovie()
     // disc image), so rolling into the attract movie just parks the front end on
     // a black screen forever. PC already skips it.
     //
+    // Bring-up aid: rather than sitting on the splash screen, take the same path
+    // pressing Start would (GUI_MSG_CONTROLLER_START -> MakeSelection), so the
+    // port walks itself into the main menu without a pad attached. Drop this
+    // once input works.
+    //
+#ifdef RAD_PS3
+    if( m_pMenu != NULL && !m_pMenu->HasSelectionBeenMade() )
+    {
+        m_pMenu->MakeSelection();
+    }
+#endif
+
 #if !defined( RAD_WIN32 ) && !defined( RAD_PS3 )
     // Play demo movie.
     //
