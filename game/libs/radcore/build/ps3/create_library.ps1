@@ -1,7 +1,7 @@
 # Create radcorep3d.a library for PS3
 $ErrorActionPreference = "Continue"
 
-$ToolchainBase = "D:\PS3.Full.3.40.SDK.PS3-DUPLEX\[134]-PS3_Toolchain_411-Win_340_001\cell"
+$ToolchainBase = "$env:PS3_SDK_ROOT\[134]-PS3_Toolchain_411-Win_340_001\cell"
 $ObjDir = "C:\simpsonshnr\game\libs\radcore\build\ps3\Debug"
 $LibDir = "C:\simpsonshnr\game\libs\radcore\lib"
 $LibFile = "$LibDir\radcorep3d.a"

@@ -1,7 +1,7 @@
 # Relink and create EBOOT
 $ErrorActionPreference = "Stop"
 
-$PS3SDK = "D:\PS3.Full.3.40.SDK.PS3-DUPLEX"
+$PS3SDK = "$env:PS3_SDK_ROOT"
 $PS3_TOOLCHAIN = "$PS3SDK\[134]-PS3_Toolchain_411-Win_340_001\cell"
 $PS3_SDK = "$PS3SDK\[132]-PS3_SDK-340_001\cell"
 $LD = "$PS3_TOOLCHAIN\host-win32\ppu\bin\ppu-lv2-g++.exe"

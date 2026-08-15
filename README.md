@@ -45,7 +45,7 @@ are set at the top of `game/libs/build_all_ps3.ps1`.
 | Xbox | `game/build/xbox/SRR2.sln` | Requires Xbox Development Kit |
 | GameCube | Requires CodeWarrior | Requires GC_SDK |
 | PS2 | Legacy | Not configured |
-| **PS3** | `game/build/ps3/rebuild_debug.bat` | **In Development** - Boots, debugging texture loading |
+| **PS3** | `game/build/ps3/link_only.ps1` | **In Development** - boots to the front end at 60fps |
 
 ## Project Structure
 
@@ -129,12 +129,15 @@ Requires CodeWarrior IDE and GameCube SDK. The `GC_SDK` folder contains the nece
 
 A PS3 port is in active development using PS3 SDK 3.40.
 
-**Current Status**: Game boots and initializes, debugging texture loading issues.
+**Current Status**: boots through to the front end and renders 2D UI at 60fps under RPCS3 (OpenGL renderer).
 
 **Build Instructions**:
 ```bash
-# Set up PS3 SDK path (adjust for your installation)
-# SDK expected at: D:\PS3.Full.3.40.SDK.PS3-DUPLEX
+# Point PS3_SDK_ROOT at your PS3 SDK 3.40 install -- the folder that
+# holds [132]-PS3_SDK-340_001 and [134]-PS3_Toolchain_411-Win_340_001.
+# Every build script reads it from the environment.
+#
+#   setx PS3_SDK_ROOT "X:/path/to/ps3sdk"
 
 # Rebuild libraries (if needed)
 cd game/libs/pure3d/build/ps3/Pure3D
@@ -151,7 +154,7 @@ rebuild_debug.bat
 ```
 
 **Requirements**:
-- PS3 SDK 3.40 (Cell toolchain, PSGL libraries)
+- PS3 SDK 3.40 (Cell toolchain, PSGL libraries), located via `PS3_SDK_ROOT`
 - RPCS3 emulator for testing
 
 **PS3 Port Files**:

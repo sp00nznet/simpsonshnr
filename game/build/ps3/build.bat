@@ -20,7 +20,7 @@ echo Configuration: %CONFIG%
 echo ============================================
 
 REM Check for PS3 SDK
-set PS3SDK=D:\PS3.Full.3.40.SDK.PS3-DUPLEX
+set PS3SDK=%PS3_SDK_ROOT%
 set PS3_TOOLCHAIN=%PS3SDK%\[134]-PS3_Toolchain_411-Win_340_001\cell
 set PS3_SDK=%PS3SDK%\[132]-PS3_SDK-340_001\cell
 

@@ -1,6 +1,6 @@
 Set-Location $PSScriptRoot
 
-$makeFself = Join-Path "D:\PS3.Full.3.40.SDK.PS3-DUPLEX" "[132]-PS3_SDK-340_001\cell\host-win32\bin\make_fself.exe"
+$makeFself = Join-Path "$env:PS3_SDK_ROOT" "[132]-PS3_SDK-340_001\cell\host-win32\bin\make_fself.exe"
 
 $elfPath = "..\..\cd\ps3\srr2p3d.elf"
 $ebootPath = "..\..\cd\ps3\SIMP00001\PS3_GAME\USRDIR\EBOOT.BIN"

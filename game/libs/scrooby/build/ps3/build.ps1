@@ -12,8 +12,8 @@ $LibOutDir = "$ScroobyDir\lib"
 $IncludeFixDir = "$LibsDir\pure3d\build\ps3\include_fix"
 
 # Paths
-$ToolchainBase = "D:\PS3.Full.3.40.SDK.PS3-DUPLEX\[134]-PS3_Toolchain_411-Win_340_001\cell"
-$SDKBase = "D:\PS3.Full.3.40.SDK.PS3-DUPLEX\[132]-PS3_SDK-340_001\cell"
+$ToolchainBase = "$env:PS3_SDK_ROOT\[134]-PS3_Toolchain_411-Win_340_001\cell"
+$SDKBase = "$env:PS3_SDK_ROOT\[132]-PS3_SDK-340_001\cell"
 
 # Compiler
 $CXX = "$ToolchainBase\host-win32\ppu\bin\ppu-lv2-g++.exe"

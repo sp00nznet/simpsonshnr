@@ -44,7 +44,7 @@ endif
 ########################################################################
 
 # Base SDK path
-PS3SDK_BASE = D:/PS3.Full.3.40.SDK.PS3-DUPLEX
+PS3SDK_BASE = $(PS3_SDK_ROOT)
 
 # Toolchain (compilers) - contains host-win32/ppu/bin with ppu-lv2-gcc etc.
 PS3_TOOLCHAIN = $(PS3SDK_BASE)/[134]-PS3_Toolchain_411-Win_340_001/cell
